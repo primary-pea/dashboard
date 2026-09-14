@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Primary Pea">
-  <!-- pea pod in the deck's palette: sage pod, green peas, oxide stem -->
-  <path d="M8 52 C 8 22, 36 6, 56 12 C 58 42, 30 58, 8 52 Z" fill="#B7C7A8" stroke="#7F9A6E" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M56 12 c 3 -4, 6 -4, 8 -1" fill="none" stroke="#C0392B" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="19" cy="43" r="7" fill="#2E8B45"/>
-  <circle cx="32" cy="32" r="7" fill="#2E8B45"/>
-  <circle cx="45" cy="21" r="7" fill="#2E8B45"/>
-  <circle cx="16.5" cy="40.5" r="2" fill="#E4F0E7" opacity=".9"/>
-  <circle cx="29.5" cy="29.5" r="2" fill="#E4F0E7" opacity=".9"/>
-  <circle cx="42.5" cy="18.5" r="2" fill="#E4F0E7" opacity=".9"/>
+  <!-- magnifying glass with a bar chart, after the Women in Data datathon mark; vibrant pea green -->
+  <g fill="none" stroke="#2FB24A" stroke-linecap="round">
+    <circle cx="38" cy="26" r="18" stroke-width="6.5"/>
+    <path d="M25.5 38.5 L8 56" stroke-width="9"/>
+  </g>
+  <g fill="#2FB24A">
+    <rect x="27.5" y="27" width="4.2" height="9" rx="1.2"/>
+    <rect x="33.4" y="21" width="4.2" height="15" rx="1.2"/>
+    <rect x="39.3" y="16" width="4.2" height="20" rx="1.2"/>
+    <rect x="45.2" y="23" width="4.2" height="13" rx="1.2"/>
+  </g>
 </svg>
