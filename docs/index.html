@@ -14,20 +14,20 @@
   --ink:#1E2A21;--ink-soft:#4B5A4F;--ink-faint:#74857A;
   --line:rgba(30,42,33,.14);--line-2:rgba(30,42,33,.30);
   --plum:#7A2E5A;--plum-soft:#9C4B7A;--gold:#8F6A12;--gold-soft:#D9B24C;--green:#2FB24A;--green-deep:#237A38;
-  --tint-plum:#F2E4EC;--tint-gold:#F7EFD8;--tint-green:#E3F0DC;--absent:#E4E9E0;--shadow:0 12px 32px rgba(30,42,33,.16);
+  --tint-plum:#F2E4EC;--tint-gold:#F7EFD8;--tint-green:#E3F0DC;--absent:#E4E9E0;--fixed-ctl:#F3F0E1;--shadow:0 12px 32px rgba(30,42,33,.16);
   --head:"Manrope",system-ui,sans-serif;--text:"Inter",system-ui,sans-serif}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
   --bg:#111A14;--surface:#182219;--surface-2:#202C22;--surface-3:#26332A;
   --ink:#ECF2EA;--ink-soft:#C3CEC5;--ink-faint:#8A978D;
   --line:rgba(236,242,234,.14);--line-2:rgba(236,242,234,.30);
   --plum:#D48BB4;--plum-soft:#B86F9A;--gold:#E2C066;--gold-soft:#C9A64A;--green:#4CCB66;--green-deep:#2FB24A;
-  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F;--absent:#2A352C;--shadow:0 12px 32px rgba(0,0,0,.5)}}
+  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F;--absent:#2A352C;--fixed-ctl:#2B291D;--shadow:0 12px 32px rgba(0,0,0,.5)}}
 :root[data-theme="dark"]{color-scheme:dark;
   --bg:#111A14;--surface:#182219;--surface-2:#202C22;--surface-3:#26332A;
   --ink:#ECF2EA;--ink-soft:#C3CEC5;--ink-faint:#8A978D;
   --line:rgba(236,242,234,.14);--line-2:rgba(236,242,234,.30);
   --plum:#D48BB4;--plum-soft:#B86F9A;--gold:#E2C066;--gold-soft:#C9A64A;--green:#4CCB66;--green-deep:#2FB24A;
-  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F;--absent:#2A352C;--shadow:0 12px 32px rgba(0,0,0,.5)}
+  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F;--absent:#2A352C;--fixed-ctl:#2B291D;--shadow:0 12px 32px rgba(0,0,0,.5)}
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:15px;line-height:1.55}
@@ -67,22 +67,29 @@ section{margin-top:36px}
 .pop[hidden]{display:none}
 .card .sechead{margin-bottom:6px}
 
-/* filter bar */
-.bar{position:sticky;top:0;z-index:30;margin-top:14px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
-.f{display:flex;flex-direction:column;gap:5px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px 8px;transition:opacity .15s}
-.f.dim{opacity:.5}
-.f .lbl{font-size:10.5px;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;font-weight:700;display:flex;justify-content:space-between;gap:10px}
-.f .lbl small{font-weight:600;letter-spacing:0;text-transform:none;color:var(--gold)}
-.f.grow{flex:1 1 220px}
-.row2{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* filter bar: one slim row of pills; only the controls the map uses are shown unless "more filters" is on */
+.bar{position:sticky;top:0;z-index:30;margin-top:12px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:22px;padding:6px 8px;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);padding:3px 10px 3px 12px;font-size:13px;min-height:34px;max-width:100%}
+.pill.hidden{display:none}
+.pill .pl{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--ink-faint);white-space:nowrap}
+.pill .tag2{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.pill .tag2:empty{display:none}
+.pill select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ink);padding:2px 16px 2px 0;max-width:220px;overflow:hidden;text-overflow:ellipsis;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2374857A' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right center}
+.pill input[type=range]{width:104px}
+.pill .yr{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);min-width:3em;font-size:13px}
 select,input[type=search],button.ghost{font:inherit;font-size:13.5px;padding:6px 9px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);max-width:100%}
 button.ghost{cursor:pointer;font-weight:600}button.ghost:hover{background:var(--surface-2)}
-.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;background:var(--surface-2);padding:2px;gap:2px;flex-wrap:wrap}
+button.ghost.sm{padding:5px 10px;border-radius:999px;font-size:12.5px}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;background:var(--surface-2);padding:2px;gap:2px;flex-wrap:nowrap}
 .seg button{border:0;background:transparent;color:var(--ink-soft);padding:4px 9px;border-radius:999px;font:inherit;font-size:12.5px;cursor:pointer;font-weight:600;white-space:nowrap}
 .seg button[aria-pressed="true"]{background:var(--plum);color:var(--bg)}
-.years{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
-input[type=range]{accent-color:var(--plum);width:120px}
-.yr{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);min-width:3.2em}
+#f-metric-sel{display:none}
+@media(max-width:980px){#f-metric{display:none}#f-metric-sel{display:block}}
+input[type=range]{accent-color:var(--plum)}
+.rowctl{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:6px 0 8px}
+.rowctl select{padding:5px 8px;font-size:13px;border-radius:999px}
+.grp{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;border:1px solid var(--line-2);border-radius:12px;padding:4px 8px;margin:0 6px 6px 0;background:color-mix(in srgb,var(--surface) 55%,transparent)}
+.grp .gl{font-size:10.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-right:2px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font:inherit;font-size:12.5px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-soft);border-radius:999px;padding:3px 10px;cursor:pointer;font-weight:600}
 .chip[aria-pressed="true"]{background:var(--tint-plum);border-color:var(--plum);color:var(--plum)}
@@ -91,15 +98,18 @@ button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-v
 .answer{margin:10px 0 0;padding:8px 12px;border-left:3px solid var(--gold);background:var(--tint-gold);border-radius:6px;font-size:14px;max-width:none;display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center}
 .answer .focus{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:2px 6px 2px 10px;font-weight:600}
 .answer .focus button{border:0;background:var(--surface-2);border-radius:50%;width:18px;height:18px;cursor:pointer;font-size:12px;line-height:1;color:var(--ink-soft)}
-.keyline{font-size:12.5px;color:var(--ink-faint);margin:8px 0 0;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.keyline{font-size:12.5px;color:var(--ink-faint);margin:8px 0 0;display:flex;gap:6px 18px;flex-wrap:wrap;align-items:center;max-width:none}
+.keyline span{white-space:nowrap}
 .keyline i{display:inline-block;width:14px;height:10px;border-radius:3px;vertical-align:middle;margin-right:5px;border:1px solid var(--line-2)}
 .keyline i.live{background:var(--surface)}
 .keyline i.fx{background:var(--surface-3);border-style:dashed}
+.keyline i.fxc{background:var(--fixed-ctl);border-color:var(--gold-soft)}
 
 /* cards: live ones follow the filters; fixed ones are results of the model and only carry their own small controls */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0;position:relative}
 .card.fixed{background:var(--surface-3);border:1px dashed var(--line-2)}
-.card.fixed::before{content:"fixed result · does not follow the filters";position:absolute;top:8px;right:12px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
+.card.fixed::before{content:attr(data-note);position:absolute;top:8px;right:12px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);max-width:70%;text-align:right}
+.card.fixed.controls{background:var(--fixed-ctl);border-style:solid;border-color:var(--gold-soft)}
 .card .ct{font-size:14px;font-weight:700;margin:0;padding-right:200px}
 .card .cs{font-size:12.5px;color:var(--ink-faint);margin:0 0 6px}
 .g2{display:grid;grid-template-columns:1fr;gap:14px}
@@ -143,7 +153,6 @@ details.sec .body{margin-top:12px}
 .legend{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--ink-faint);margin-top:8px;flex-wrap:wrap}
 .legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:baseline;border-radius:2px}
 .ramp{width:140px;height:10px;border-radius:3px;border:1px solid var(--line)}
-.presets{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 8px}
 .rank{list-style:none;margin:0;padding:0;max-height:560px;overflow:auto;font-size:13.5px}
 .rank li{display:grid;grid-template-columns:22px 22px 1fr 58px 96px;gap:6px;align-items:center;padding:3px 4px;border-bottom:1px solid var(--line);border-radius:4px}
 .rank li.off{opacity:.45}
@@ -245,16 +254,19 @@ ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
   </div>
 
   <div class="bar" id="bar">
-    <div class="f" id="g-out"><span class="lbl">Outcome <small id="h-out"></small></span><select id="f-out"></select></div>
-    <div class="f" id="g-cl"><span class="lbl">Policy cluster <small id="h-cl"></small></span><select id="f-cl"></select></div>
-    <div class="f grow"><span class="lbl">Map colours by</span><div class="seg" id="f-metric">
-      <button type="button" data-v="level">outcome level</button><button type="button" data-v="change">outcome change</button><button type="button" data-v="policies">cluster policies</button><button type="button" data-v="gap">gap vs context</button><button type="button" data-v="concern">concern</button></div></div>
-    <div class="f" id="g-year"><span class="lbl">Year <small id="h-year"></small></span><div class="years"><input type="range" id="f-year" min="2000" max="2023" step="1"><span class="yr" id="f-yearl"></span></div></div>
-    <div class="f" id="g-win"><span class="lbl">Change window <small id="h-win"></small></span><div class="years"><input type="range" id="f-from" min="2000" max="2022" step="1"><span class="yr" id="f-winl"></span><input type="range" id="f-to" min="2001" max="2023" step="1"></div></div>
-    <div class="f" style="justify-content:flex-end"><span class="lbl">&nbsp;</span><button class="ghost" id="f-reset" type="button">Reset</button></div>
+    <div class="pill" id="g-metric"><span class="pl">Map colours by</span>
+      <div class="seg" id="f-metric"><button type="button" data-v="level">outcome level</button><button type="button" data-v="change">outcome change</button><button type="button" data-v="policies">cluster policies</button><button type="button" data-v="gap">gap vs context</button><button type="button" data-v="concern">concern</button></div>
+      <select id="f-metric-sel" aria-label="Map colours by"><option value="level">outcome level</option><option value="change">outcome change</option><option value="policies">cluster policies</option><option value="gap">gap vs context</option><option value="concern">concern</option></select>
+    </div>
+    <label class="pill" id="g-out"><span class="pl">Outcome</span><select id="f-out"></select><span class="tag2"></span></label>
+    <label class="pill" id="g-cl"><span class="pl">Cluster</span><select id="f-cl"></select><span class="tag2"></span></label>
+    <label class="pill" id="g-year"><span class="pl">Year</span><input type="range" id="f-year" min="2000" max="2023" step="1"><b class="yr" id="f-yearl"></b><span class="tag2"></span></label>
+    <div class="pill" id="g-win"><span class="pl">Window</span><input type="range" id="f-from" min="2000" max="2022" step="1" aria-label="Window start"><b class="yr" id="f-winl"></b><input type="range" id="f-to" min="2001" max="2023" step="1" aria-label="Window end"><span class="tag2"></span></div>
+    <button class="chip" id="f-more" type="button" aria-pressed="false">more filters</button>
+    <button class="ghost sm" id="f-reset" type="button">Reset</button>
   </div>
   <p class="answer" id="answer"></p>
-  <p class="keyline"><span><i class="live"></i>plain panels follow the filters and the country list</span><span><i class="fx"></i>shaded panels are fixed results of the model, with their own small controls</span></p>
+  <p class="keyline"><span><i class="live"></i>plain — follows the filters and the ticked countries</span><span><i class="fx"></i>shaded — fixed result</span><span><i class="fxc"></i>shaded, warm — fixed result with its own controls</span></p>
 
   <section id="mapsec">
     <div class="sechead"><h2 id="map-h">Where</h2><button class="info" type="button" aria-label="About the map" aria-expanded="false" data-pop="pop-map">i</button>
@@ -280,7 +292,11 @@ ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
       </div>
       <div class="card">
         <p class="ct" id="rank-title" style="padding-right:0"></p><p class="cs" id="rank-sub"></p>
-        <div class="presets" id="presets"></div>
+        <div class="rowctl">
+          <select id="r-region" aria-label="Sub-region"><option value="all">All regions</option><option value="WCA">West &amp; Central</option><option value="ESA">Eastern &amp; Southern</option></select>
+          <select id="r-pick" aria-label="Which countries to tick"><option value="all">All countries</option><option value="worst">Worst 10</option><option value="best">Best 10</option><option value="tails">Both tails</option><option value="none">None</option><option value="custom">Custom ticks</option></select>
+          <button class="chip" id="r-hide" type="button" aria-pressed="false">Hide unticked</button>
+        </div>
         <input type="search" id="rank-q" placeholder="Find a country…" aria-label="Find a country" style="width:100%;margin-bottom:6px">
         <ol class="rank" id="rank"></ol>
       </div>
@@ -357,7 +373,7 @@ ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
         <div class="legend"><span><i style="background:var(--green-deep);border-radius:50%"></i>Better than context predicts</span><span><i style="background:var(--plum)"></i>Worse than context predicts</span><span><i style="background:transparent;border:1.5px solid var(--ink-faint);border-radius:50%"></i>The rest</span></div>
         <div class="readout" id="sc-read"></div>
       </div>
-      <div class="card fixed">
+      <div class="card fixed" data-note="fixed on anaemia · ignores every filter · follows focus">
         <p class="ct">The two tails</p><p class="cs">Anaemia against the context model, 2015–2023 · click a name to focus it</p>
         <h3>Doing better than predicted</h3><ul class="rank tails" id="tail-pos" style="max-height:none"></ul>
         <h3 style="margin-top:14px">Doing worse than predicted</h3><ul class="rank tails" id="tail-neg" style="max-height:none"></ul>
@@ -384,16 +400,16 @@ ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
   <li><b>Subsamples</b> — shorter windows where an extra control exists</li>
 </ul>
 <b>The two smaller panels</b> — the same dose against each outcome the bar offers, and other ways of counting the dose against anaemia.<button class="x" type="button" aria-label="Close">×</button></div></div>
-    <div class="card fixed">
+    <div class="card fixed controls" data-note="fixed on anaemia × anaemia policies · own controls · ignores every filter">
       <div class="chips" id="ladder-blocks" style="margin-top:18px"></div>
       <div class="wide"><svg class="chart" id="c-ladder" viewBox="0 0 900 200" role="img" aria-label="Ladder of estimates with intervals"></svg></div>
     </div>
     <div class="g2 even" style="margin-top:14px">
-      <div class="card fixed">
+      <div class="card fixed" data-note="fixed · follows the outcome selector only, as a highlight">
         <p class="ct">Same dose, other outcomes</p><p class="cs">The chosen outcome is highlighted.</p>
         <svg class="chart" id="c-outcomes" viewBox="0 0 560 190" role="img" aria-label="Estimates for other outcomes"></svg>
       </div>
-      <div class="card fixed">
+      <div class="card fixed" data-note="fixed · follows the cluster selector only, as a highlight">
         <p class="ct">Other ways of counting the dose</p><p class="cs">Units differ by row, so a table rather than a shared axis. Fortification rows light up when that cluster is chosen.</p>
         <div class="tablewrap" style="border:0"><table id="alt"><thead><tr><th>Dose</th><th class="num">Estimate</th><th class="num">95% interval</th><th class="num">p</th><th>Unit</th></tr></thead><tbody></tbody></table></div>
       </div>
@@ -414,8 +430,8 @@ ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
   <li><b>Local-projections DiD</b> — one clean comparison per horizon</li>
 </ul>
 <b>What to look for</b> — a flat line <i>before</i> the event. If the pre-event years already move, the comparison group is contaminated and the post-event dip cannot be credited to the policy.<button class="x" type="button" aria-label="Close">×</button></div></div>
-    <div class="card fixed">
-      <div style="display:flex;gap:16px;flex-wrap:wrap;margin:18px 0 8px"><div class="seg" id="f-event"></div><div class="seg" id="f-est"></div></div>
+    <div class="card fixed controls" data-note="fixed on anaemia · own controls · ignores every filter">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 8px"><span class="grp"><span class="gl">Event</span><div class="seg" id="f-event"></div></span><span class="grp"><span class="gl">Estimator</span><div class="seg" id="f-est"></div></span></div>
       <div class="wide"><svg class="chart" id="c-event" viewBox="0 0 900 260" role="img" aria-label="Event-study coefficients by year relative to the event"></svg></div>
       <div class="readout" id="ev-read"></div>
     </div>
@@ -435,9 +451,9 @@ ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
   <li>The country in focus is outlined; click any dot to focus it.</li>
 </ul><button class="x" type="button" aria-label="Close">×</button></div></div>
     <div class="g2 even">
-      <div class="card fixed"><p class="ct">Forecast error by model</p><p class="cs">Root mean squared error, points of anaemia; lower is better</p>
+      <div class="card fixed" data-note="fixed on anaemia · ignores every filter"><p class="ct">Forecast error by model</p><p class="cs">Root mean squared error, points of anaemia; lower is better</p>
         <svg class="chart" id="c-loco" viewBox="0 0 560 210" role="img" aria-label="Forecast error by model"></svg></div>
-      <div class="card fixed"><p class="ct">Did the policy term help, country by country?</p><p class="cs" id="lo-sub"></p>
+      <div class="card fixed" data-note="fixed on anaemia · ignores every filter · follows focus"><p class="ct">Did the policy term help, country by country?</p><p class="cs" id="lo-sub"></p>
         <svg class="chart" id="c-loco2" viewBox="0 0 560 210" role="img" aria-label="Per-country change in forecast error from adding policy"></svg></div>
     </div>
   </section>
@@ -479,7 +495,7 @@ ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
   <li>Use the chips to keep only some recipes; hover a dot for its recipe.</li>
   <li>If the effect were real and large, the whole curve would sit to one side. It does not.</li>
 </ul><button class="x" type="button" aria-label="Close">×</button></div></div>
-    <div class="card fixed">
+    <div class="card fixed controls" data-note="fixed on anaemia · own controls · ignores every filter">
       <div class="chips" id="spec-chips" style="margin-top:18px"></div>
       <div class="wide"><svg class="chart" id="c-spec" viewBox="0 0 900 250" role="img" aria-label="Specification curve"></svg></div>
       <div class="readout" id="spec-read"></div>
@@ -519,8 +535,8 @@ ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
 <script>
 /* ============================================================ state ============================================================ */
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-const DEF = { out: "out_anaemia_wra_fs_pct", cl: "anaemia", metric: "level", year: 2023, from: 2015, to: 2023, iso: null, y2: "change", event: "anaemia_policy", est: "twfe" };
-const state = { ...DEF, sel: null, blocks: new Set(["main", "lags", "guards", "lead", "trend", "bracket", "context"]), spec: {} };  // sel: null = every country ticked
+const DEF = { out: "out_anaemia_wra_fs_pct", cl: "anaemia", metric: "level", year: 2023, from: 2015, to: 2023, iso: null, y2: "change", event: "anaemia_policy", est: "twfe", region: "all", pick: "all" };
+const state = { ...DEF, sel: null, more: false, hide: false, blocks: new Set(["main", "lags", "guards", "lead", "trend", "bracket", "context"]), spec: {} };  // sel: null = every country ticked
 const S = {};
 let css = {};
 
@@ -584,15 +600,17 @@ function wirePops() {
 /* ============================================================ URL state ============================================================ */
 function toHash() {
   const p = new URLSearchParams();
-  for (const k of ["out", "cl", "metric", "year", "from", "to", "iso", "y2", "event", "est"]) if (state[k] !== DEF[k] && state[k] !== null) p.set(k, state[k]);
-  if (state.sel !== null) p.set("sel", [...state.sel].join(","));
+  for (const k of ["out", "cl", "metric", "year", "from", "to", "iso", "y2", "event", "est", "region", "pick"]) if (state[k] !== DEF[k] && state[k] !== null) p.set(k, state[k]);
+  if (state.pick === "custom" && state.sel !== null) p.set("sel", [...state.sel].join(","));
   const h = p.toString(); history.replaceState(null, "", location.pathname + location.search + (h ? "#" + h : ""));
 }
 function fromHash() {
   const p = new URLSearchParams(location.hash.slice(1));
-  for (const k of ["out", "cl", "metric", "iso", "y2", "event", "est"]) if (p.has(k)) state[k] = p.get(k);
+  for (const k of ["out", "cl", "metric", "iso", "y2", "event", "est", "region", "pick"]) if (p.has(k)) state[k] = p.get(k);
+  if (!["all", "WCA", "ESA"].includes(state.region)) state.region = "all";
+  if (!["all", "worst", "best", "tails", "none", "custom"].includes(state.pick)) state.pick = "all";
   for (const k of ["year", "from", "to"]) if (p.has(k)) state[k] = +p.get(k);
-  if (p.has("sel")) state.sel = new Set(p.get("sel").split(",").filter(i => byIso(i)));
+  if (p.has("sel")) { state.sel = new Set(p.get("sel").split(",").filter(i => byIso(i))); state.pick = "custom"; }
   if (!(state.out in S.meta.outcomes)) state.out = DEF.out;
   if (!(state.cl in S.meta.clusters)) state.cl = DEF.cl;
   if (!(state.metric in METRIC)) state.metric = DEF.metric;
@@ -611,12 +629,13 @@ function drawAnswer() {
   $("#answer").innerHTML = s;
   $("#focus-x")?.addEventListener("click", () => { state.iso = null; render(); });
   // which selectors the map is using right now
-  const uses = METRIC[state.metric].uses;
-  const hint = (id, key, msg) => { const g = $(id); g.classList.toggle("dim", !uses.includes(key)); $(id + " small").textContent = uses.includes(key) ? "" : "not on the map"; g.title = uses.includes(key) ? "" : msg; };
-  hint("#g-out", "out", "The map is not coloured by the outcome right now; the outcome still drives the trends, the scatter and the watchlist.");
-  hint("#g-cl", "cl", "The map is not coloured by the cluster right now; the cluster still drives the trends, the scatter and the watchlist.");
-  hint("#g-year", "year", "The map is not using the year right now; the year still sets the level and policy columns elsewhere.");
-  hint("#g-win", "win", "The map is not using the window right now; the window still sets the change columns, the scatter and the shaded band.");
+  const uses = METRIC[state.metric].uses; let hidden = 0;
+  const show = (id, key, msg) => { const g = $(id), used = uses.includes(key); g.classList.toggle("hidden", !used && !state.more); if (!used) hidden++; g.querySelector(".tag2").textContent = used ? "" : "not on the map"; g.title = used ? "" : msg; };
+  show("#g-out", "out", "The map is not coloured by the outcome right now; the outcome still drives the trends, the scatter and the watchlist.");
+  show("#g-cl", "cl", "The map is not coloured by the cluster right now; the cluster still drives the trends, the scatter and the watchlist.");
+  show("#g-year", "year", "The map is not using the year right now; the year still sets the level and policy columns elsewhere.");
+  show("#g-win", "win", "The map is not using the window right now; the window still sets the change columns, the scatter and the shaded band.");
+  const more = $("#f-more"); more.hidden = hidden === 0; more.setAttribute("aria-pressed", String(state.more)); more.textContent = state.more ? "fewer filters" : `more filters (${hidden})`;
 }
 
 /* ============================================================ KPIs ============================================================ */
@@ -658,24 +677,30 @@ function drawMap() {
   $("#map-sub").textContent = state.metric === "level" || state.metric === "change" ? S.meta.outcomes[state.out].source + (anyFallback() ? " · latest value within three years where the series ends early" : "") : state.metric === "policies" ? "WHO GIFNA registry, records active in the year, clustered by the rules at the foot of the page" : state.metric === "gap" ? "Residual from the context model, R² 0.81, 45 countries" : "Equal weights over the four indicators; 500 random weightings for stability";
   $("#map-h").textContent = state.metric === "level" ? "Where it is worst" : state.metric === "change" ? "Where it is getting worse" : state.metric === "policies" ? "Where the most has been written" : state.metric === "gap" ? "Where the numbers defy the context" : "Where attention should go";
 }
+function composeSel() {
+  if (state.pick === "custom") return state.sel;
+  const pool = C().filter(c => state.region === "all" || c.subregion === state.region);
+  if (state.pick === "all") return state.region === "all" ? null : new Set(pool.map(c => c.iso3));
+  if (state.pick === "none") return new Set();
+  const ranked = pool.map(c => ({ c, v: mval(c) })).filter(r => r.v !== null).sort((a, b) => b.v - a.v);
+  const worst = ranked.slice(0, 10).map(r => r.c.iso3), best = ranked.slice(-10).map(r => r.c.iso3);
+  return new Set(state.pick === "worst" ? worst : state.pick === "best" ? best : worst.concat(best));
+}
 function drawRank() {
   const q = ($("#rank-q").value || "").trim().toLowerCase(), scale = colorScale();
-  const rows = C().map(c => ({ c, v: mval(c) })).filter(r => r.v !== null && (!q || r.c.country.toLowerCase().includes(q))).sort((a, b) => b.v - a.v);
-  const max = d3.max(rows, r => Math.abs(r.v)) || 1, ol = $("#rank"); ol.replaceChildren();
+  const rows = C().map(c => ({ c, v: mval(c) })).filter(r => r.v !== null && (!q || r.c.country.toLowerCase().includes(q)) && (!state.hide || ticked(r.c.iso3))).sort((a, b) => b.v - a.v);
+  const max = d3.max(C().map(mval).filter(v => v !== null), v => Math.abs(v)) || 1, ol = $("#rank"); ol.replaceChildren();
   rows.forEach((r, i) => { const li = document.createElement("li"); li.className = (r.c.iso3 === state.iso ? "sel " : "") + (ticked(r.c.iso3) ? "" : "off");
     li.innerHTML = `<input type="checkbox" ${ticked(r.c.iso3) ? "checked" : ""} aria-label="Include ${r.c.country}"><span class="n">${i + 1}</span><button class="name" type="button">${r.c.country}</button><span class="v">${mfmt(r.v)}</span><span class="bw"><i class="bi" style="width:${Math.abs(r.v) / max * 100}%;background:${scale(r.v)}"></i></span>`;
-    li.querySelector("input").addEventListener("change", e => { const set = state.sel === null ? new Set(C().map(c => c.iso3)) : new Set(state.sel); e.target.checked ? set.add(r.c.iso3) : set.delete(r.c.iso3); state.sel = set.size === 49 ? null : set; render(); });
+    li.querySelector("input").addEventListener("change", e => { const set = state.sel === null ? new Set(C().map(c => c.iso3)) : new Set(state.sel); e.target.checked ? set.add(r.c.iso3) : set.delete(r.c.iso3); state.sel = set; state.pick = "custom"; render(); });
     li.querySelector(".name").addEventListener("click", () => select(r.c.iso3)); ol.appendChild(li); });
-  const worstFirst = state.metric !== "policies";
+  if (!rows.length) { const li = document.createElement("li"); li.style.gridTemplateColumns = "1fr"; li.innerHTML = `<span style="color:var(--ink-faint)">${state.hide ? "Nothing is ticked." : "No country matches."}</span>`; ol.appendChild(li); }
+  const worstFirst = state.metric !== "policies", n = visible().length;
   $("#rank-title").textContent = `Ranked: ${METRIC[state.metric].label()}`;
-  $("#rank-sub").textContent = `${rows.length} with a value · ${worstFirst ? (state.metric === "concern" ? "highest concern first" : "worst first") : "most on the books first"} · tick to include, click a name to focus`;
-  // presets
-  const P = [["all", "All 49"], ["WCA", "West & Central"], ["ESA", "Eastern & Southern"], ["worst", worstFirst ? "Worst 10" : "Most 10"], ["best", worstFirst ? "Best 10" : "Fewest 10"], ["none", "Clear"]];
-  const ranked = C().map(c => ({ c, v: mval(c) })).filter(r => r.v !== null).sort((a, b) => b.v - a.v);
-  const setOf = k => k === "all" ? null : k === "none" ? new Set() : k === "WCA" || k === "ESA" ? new Set(C().filter(c => c.subregion === k).map(c => c.iso3)) : new Set((k === "worst" ? ranked.slice(0, 10) : ranked.slice(-10)).map(r => r.c.iso3));
-  const same = (a, b) => (a === null && b === null) || (a !== null && b !== null && a.size === b.size && [...a].every(x => b.has(x)));
-  const pr = $("#presets"); pr.replaceChildren();
-  P.forEach(([k, lab]) => { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = lab; b.setAttribute("aria-pressed", String(same(state.sel, setOf(k)))); b.addEventListener("click", () => { state.sel = setOf(k); render(); }); pr.appendChild(b); });
+  $("#rank-sub").textContent = `${worstFirst ? (state.metric === "concern" ? "highest concern first" : "worst first") : "most on the books first"} · ${n} of 49 ticked · tick to include, click a name to focus`;
+  const pick = $("#r-pick"); pick.querySelector('[value="worst"]').textContent = worstFirst ? "Worst 10" : "Most 10"; pick.querySelector('[value="best"]').textContent = worstFirst ? "Best 10" : "Fewest 10";
+  pick.querySelector('[value="custom"]').hidden = state.pick !== "custom"; pick.value = state.pick; $("#r-region").value = state.region;
+  const hb = $("#r-hide"); hb.setAttribute("aria-pressed", String(state.hide)); hb.textContent = state.hide ? "Show unticked" : "Hide unticked";
 }
 
 /* ============================================================ trends ============================================================ */
@@ -784,8 +809,10 @@ function drawScatter() {
 /* ============================================================ ladder ============================================================ */
 function drawLadder() {
   const blocks = S.model.blocks, chips = $("#ladder-blocks"); chips.replaceChildren();
+  const grp = document.createElement("span"); grp.className = "grp"; const gl = document.createElement("span"); gl.className = "gl"; gl.textContent = "Blocks shown"; grp.appendChild(gl);
   for (const [k, lab] of Object.entries(blocks)) { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", String(state.blocks.has(k)));
-    b.innerHTML = `${lab} <small>${S.model.ladder.filter(r => r.block === k).length}</small>`; b.addEventListener("click", () => { if (k === "main") return; state.blocks.has(k) ? state.blocks.delete(k) : state.blocks.add(k); drawLadder(); }); chips.appendChild(b); }
+    b.innerHTML = `${lab} <small>${S.model.ladder.filter(r => r.block === k).length}</small>`; b.addEventListener("click", () => { if (k === "main") return; state.blocks.has(k) ? state.blocks.delete(k) : state.blocks.add(k); drawLadder(); }); grp.appendChild(b); }
+  chips.appendChild(grp);
   const rows = S.model.ladder.filter(r => state.blocks.has(r.block)), svg = $("#c-ladder"), W = 900, rh = 22, hh = 20, m = { t: 26, r: 24, b: 30, l: 400 };
   const items = []; let lb = null; rows.forEach(r => { if (r.block !== lb) { items.push({ head: r.block }); lb = r.block; } items.push({ r }); });
   const H = m.t + items.reduce((a, it) => a + (it.head ? hh : rh), 0) + m.b; svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.replaceChildren();
@@ -886,7 +913,7 @@ function drawWatchlist() {
 /* ============================================================ specification curve ============================================================ */
 function drawSpec() {
   const dims = S.model.spec_dims, lab = S.model.spec_labels, chips = $("#spec-chips"); chips.replaceChildren();
-  for (const [dim, vals] of Object.entries(dims)) { const wrap = document.createElement("span"); wrap.style.cssText = "display:inline-flex;gap:6px;align-items:center;margin-right:8px;flex-wrap:wrap"; const l = document.createElement("span"); l.style.cssText = "font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em;font-weight:700"; l.textContent = dim; wrap.appendChild(l);
+  for (const [dim, vals] of Object.entries(dims)) { const wrap = document.createElement("span"); wrap.className = "grp"; const l = document.createElement("span"); l.className = "gl"; l.textContent = dim; wrap.appendChild(l);
     for (const v of vals) { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", String(!state.spec[dim] || state.spec[dim].has(String(v)))); b.textContent = lab[v] || (dim === "lag" ? `lag ${v}` : v);
       b.addEventListener("click", () => { const set = state.spec[dim] || new Set(vals.map(String)); set.has(String(v)) ? set.delete(String(v)) : set.add(String(v)); state.spec[dim] = set; drawSpec(); }); wrap.appendChild(b); } chips.appendChild(wrap); }
   const on = s => Object.entries(state.spec).every(([dim, set]) => set.has(String(dim === "exposure" ? s.e : dim === "lag" ? s.lag : dim === "income" ? s.inc : dim === "controls" ? s.ctl : s.est)));
@@ -918,7 +945,8 @@ function drawRules() {
 
 /* ============================================================ render + boot ============================================================ */
 function render() {
-  toHash(); readTokens();
+  if (state.pick !== "custom") state.sel = composeSel();
+  toHash(); readTokens(); $("#f-metric-sel").value = state.metric;
   $("#f-out").value = state.out; $("#f-cl").value = state.cl; $("#f-year").value = state.year; $("#f-yearl").textContent = state.year;
   $("#f-from").value = state.from; $("#f-to").value = state.to; $("#f-winl").textContent = `${state.from}–${state.to}`;
   pressed("#f-metric", state.metric); pressed("#f-y2", state.y2);
@@ -936,8 +964,13 @@ Promise.all(["meta", "countries", "series", "model"].map(n => fetch(`data/${n}.j
   $("#f-from").addEventListener("input", e => { state.from = Math.min(+e.target.value, state.to - 1); render(); });
   $("#f-to").addEventListener("input", e => { state.to = Math.max(+e.target.value, state.from + 1); render(); });
   $$("#f-metric button").forEach(b => b.addEventListener("click", () => { state.metric = b.dataset.v; render(); }));
+  $("#f-metric-sel").addEventListener("change", e => { state.metric = e.target.value; render(); });
+  $("#f-more").addEventListener("click", () => { state.more = !state.more; drawAnswer(); });
+  $("#r-region").addEventListener("change", e => { state.region = e.target.value; if (state.pick === "custom") state.pick = "all"; render(); });
+  $("#r-pick").addEventListener("change", e => { state.pick = e.target.value; render(); });
+  $("#r-hide").addEventListener("click", () => { state.hide = !state.hide; drawRank(); });
   $$("#f-y2 button").forEach(b => b.addEventListener("click", () => { state.y2 = b.dataset.v; render(); }));
-  $("#f-reset").addEventListener("click", () => { Object.assign(state, DEF); state.sel = null; state.spec = {}; render(); drawSpec(); });
+  $("#f-reset").addEventListener("click", () => { Object.assign(state, DEF); state.sel = null; state.more = false; state.hide = false; state.spec = {}; render(); drawSpec(); });
   $("#rank-q").addEventListener("input", drawRank);
   $("#share").addEventListener("click", e => { e.preventDefault(); navigator.clipboard?.writeText(location.href).then(() => { e.target.textContent = "link copied"; setTimeout(() => e.target.textContent = "copy a link to this view", 1600); }); });
   $$("#wl th[data-k]").forEach(th => th.addEventListener("click", () => { const k = th.dataset.k; if (k === sortKey) sortAsc = !sortAsc; else { sortKey = k; sortAsc = k === "concern_rank" || k === "country" || k === "subregion"; } drawWatchlist(); }));
