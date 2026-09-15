@@ -3,93 +3,129 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Delivery Gap · Primary Pea</title>
-<meta name="description" content="Policies written and outcomes measured, side by side, for 49 sub-Saharan African countries. Pick an outcome, a policy cluster, a year and a country; every panel follows.">
+<meta name="description" content="Policies written and outcomes measured, side by side, for 49 sub-Saharan African countries. Pick an outcome, a policy cluster, a year and a set of countries; every panel follows.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"><meta name="theme-color" content="#F4F8F0">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap">
 <style>
 /* Palette and type follow the project site (primary-pea.github.io/assets/site.css) so the three pages read as one. */
 :root{color-scheme:light;
-  --bg:#F4F8F0;--surface:#FBFDF8;--surface-2:#EDF3E6;
+  --bg:#F4F8F0;--surface:#FBFDF8;--surface-2:#EDF3E6;--surface-3:#E6EDDF;
   --ink:#1E2A21;--ink-soft:#4B5A4F;--ink-faint:#74857A;
   --line:rgba(30,42,33,.14);--line-2:rgba(30,42,33,.30);
   --plum:#7A2E5A;--plum-soft:#9C4B7A;--gold:#8F6A12;--gold-soft:#D9B24C;--green:#2FB24A;--green-deep:#237A38;
-  --tint-plum:#F2E4EC;--tint-gold:#F7EFD8;--tint-green:#E3F0DC;--absent:#E4E9E0;
+  --tint-plum:#F2E4EC;--tint-gold:#F7EFD8;--tint-green:#E3F0DC;--absent:#E4E9E0;--shadow:0 12px 32px rgba(30,42,33,.16);
   --head:"Manrope",system-ui,sans-serif;--text:"Inter",system-ui,sans-serif}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
-  --bg:#111A14;--surface:#182219;--surface-2:#202C22;
+  --bg:#111A14;--surface:#182219;--surface-2:#202C22;--surface-3:#26332A;
   --ink:#ECF2EA;--ink-soft:#C3CEC5;--ink-faint:#8A978D;
   --line:rgba(236,242,234,.14);--line-2:rgba(236,242,234,.30);
   --plum:#D48BB4;--plum-soft:#B86F9A;--gold:#E2C066;--gold-soft:#C9A64A;--green:#4CCB66;--green-deep:#2FB24A;
-  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F;--absent:#2A352C}}
+  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F;--absent:#2A352C;--shadow:0 12px 32px rgba(0,0,0,.5)}}
 :root[data-theme="dark"]{color-scheme:dark;
-  --bg:#111A14;--surface:#182219;--surface-2:#202C22;
+  --bg:#111A14;--surface:#182219;--surface-2:#202C22;--surface-3:#26332A;
   --ink:#ECF2EA;--ink-soft:#C3CEC5;--ink-faint:#8A978D;
   --line:rgba(236,242,234,.14);--line-2:rgba(236,242,234,.30);
   --plum:#D48BB4;--plum-soft:#B86F9A;--gold:#E2C066;--gold-soft:#C9A64A;--green:#4CCB66;--green-deep:#2FB24A;
-  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F;--absent:#2A352C}
+  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F;--absent:#2A352C;--shadow:0 12px 32px rgba(0,0,0,.5)}
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:15px;line-height:1.55}
 a{color:var(--plum)}a:hover{text-decoration:underline}
 .wrap{max-width:1280px;margin:0 auto;padding-inline:20px}
 header.site{border-bottom:1px solid var(--line);background:var(--bg)}
-header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:12px}
-.brand{font-family:var(--head);font-weight:800;letter-spacing:-.01em;font-size:18px;color:var(--ink);text-decoration:none}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:10px}
+.brand{font-family:var(--head);font-weight:800;letter-spacing:-.01em;font-size:17px;color:var(--ink);text-decoration:none}
 .brand span{color:var(--green-deep)}
-nav.site a{font-size:14px;font-weight:600;color:var(--ink-soft);margin-left:18px;text-decoration:none}
+nav.site a{font-size:13.5px;font-weight:600;color:var(--ink-soft);margin-left:16px;text-decoration:none}
 nav.site a::after{content:" ↗";color:var(--ink-faint)}
-main{padding-block:26px 64px}
-.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0}
-h1{font-family:var(--head);font-weight:800;font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-.02em;margin:.25em 0 .3em;text-wrap:balance;max-width:22ch}
-h2{font-family:var(--head);font-weight:800;font-size:clamp(20px,2.3vw,26px);line-height:1.18;letter-spacing:-.015em;margin:0 0 .2em;text-wrap:balance}
-h3{font-family:var(--head);font-weight:700;font-size:15.5px;margin:0 0 .2em}
-.lead{font-size:17px;color:var(--ink-soft);max-width:70ch;margin:0}
+main{padding-block:18px 64px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0}
+.hero{display:flex;align-items:baseline;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin-top:4px}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(22px,2.6vw,30px);line-height:1.15;letter-spacing:-.02em;margin:0;white-space:nowrap}
+@media(max-width:700px){h1{white-space:normal}}
+.stamp{font-size:12.5px;color:var(--ink-faint);margin:0;white-space:nowrap}
+.stamp code{background:var(--surface-2);padding:1px 6px;border-radius:4px;font-size:11.5px}
+h2{font-family:var(--head);font-weight:800;font-size:clamp(19px,2.1vw,24px);line-height:1.18;letter-spacing:-.015em;margin:0;text-wrap:balance;display:inline}
+h3{font-family:var(--head);font-weight:700;font-size:15px;margin:0 0 .2em}
 p{max-width:76ch}
-section{margin-top:44px}
-.sechead{margin-bottom:14px}
-.sechead p{color:var(--ink-soft);margin:.25em 0 0;font-size:14.5px}
-.stamp{font-size:13px;color:var(--ink-faint);margin-top:16px}
-.stamp code{background:var(--surface-2);padding:1px 6px;border-radius:4px;font-size:12px}
-.answer{margin:14px 0 0;padding:10px 14px;border-left:3px solid var(--gold);background:var(--tint-gold);border-radius:6px;font-size:15px;max-width:none}
+section{margin-top:36px}
+.sechead{margin-bottom:12px;position:relative;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sechead .sub{font-size:13px;color:var(--ink-faint);margin:0}
+
+/* (i) popovers: every explanatory paragraph lives behind one */
+.info{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--ink-faint);background:transparent;color:var(--ink-faint);font:700 12px/1 var(--head);cursor:pointer;vertical-align:middle;padding:0;flex:none}
+.info:hover,.info[aria-expanded="true"]{border-color:var(--plum);color:var(--plum);background:var(--tint-plum)}
+.pop{position:absolute;top:calc(100% + 8px);left:0;z-index:50;width:min(64ch,calc(100vw - 40px));background:var(--surface);border:1px solid var(--line-2);border-radius:12px;box-shadow:var(--shadow);padding:12px 40px 12px 14px;font-size:14px;line-height:1.5;color:var(--ink-soft)}
+.pop b{color:var(--ink)}
+.pop{max-height:70vh;overflow:auto}
+.pop ul{margin:4px 0 8px;padding-left:18px}
+.pop li{margin:2px 0}
+.pop table td{border:0;vertical-align:top}
+.pop .x{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;border:0;background:var(--surface-2);color:var(--ink-soft);cursor:pointer;font-size:15px;line-height:1}
+.pop .x:hover{background:var(--tint-plum);color:var(--plum)}
+.pop[hidden]{display:none}
+.card .sechead{margin-bottom:6px}
 
 /* filter bar */
-.bar{position:sticky;top:0;z-index:30;margin-top:18px;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:flex-end}
-.f{display:flex;flex-direction:column;gap:3px;min-width:0}
-.f .lbl{font-size:11px;color:var(--ink-faint);letter-spacing:.05em;text-transform:uppercase;font-weight:700}
+.bar{position:sticky;top:0;z-index:30;margin-top:14px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.f{display:flex;flex-direction:column;gap:5px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px 8px;transition:opacity .15s}
+.f.dim{opacity:.5}
+.f .lbl{font-size:10.5px;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;font-weight:700;display:flex;justify-content:space-between;gap:10px}
+.f .lbl small{font-weight:600;letter-spacing:0;text-transform:none;color:var(--gold)}
+.f.grow{flex:1 1 220px}
+.row2{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 select,input[type=search],button.ghost{font:inherit;font-size:13.5px;padding:6px 9px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);max-width:100%}
 button.ghost{cursor:pointer;font-weight:600}button.ghost:hover{background:var(--surface-2)}
-.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);padding:2px;gap:2px;flex-wrap:wrap}
-.seg button{border:0;background:transparent;color:var(--ink-soft);padding:5px 10px;border-radius:999px;font:inherit;font-size:13px;cursor:pointer;font-weight:600}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;background:var(--surface-2);padding:2px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:var(--ink-soft);padding:4px 9px;border-radius:999px;font:inherit;font-size:12.5px;cursor:pointer;font-weight:600;white-space:nowrap}
 .seg button[aria-pressed="true"]{background:var(--plum);color:var(--bg)}
 .years{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
-input[type=range]{accent-color:var(--plum);width:130px}
+input[type=range]{accent-color:var(--plum);width:120px}
 .yr{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);min-width:3.2em}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font:inherit;font-size:12.5px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-soft);border-radius:999px;padding:3px 10px;cursor:pointer;font-weight:600}
 .chip[aria-pressed="true"]{background:var(--tint-plum);border-color:var(--plum);color:var(--plum)}
 .chip small{font-weight:500;color:var(--ink-faint)}
 button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+.answer{margin:10px 0 0;padding:8px 12px;border-left:3px solid var(--gold);background:var(--tint-gold);border-radius:6px;font-size:14px;max-width:none;display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center}
+.answer .focus{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:2px 6px 2px 10px;font-weight:600}
+.answer .focus button{border:0;background:var(--surface-2);border-radius:50%;width:18px;height:18px;cursor:pointer;font-size:12px;line-height:1;color:var(--ink-soft)}
+.keyline{font-size:12.5px;color:var(--ink-faint);margin:8px 0 0;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.keyline i{display:inline-block;width:14px;height:10px;border-radius:3px;vertical-align:middle;margin-right:5px;border:1px solid var(--line-2)}
+.keyline i.live{background:var(--surface)}
+.keyline i.fx{background:var(--surface-3);border-style:dashed}
 
-/* cards and grids */
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
-.card .ct{font-size:14px;font-weight:700;margin:0}
+/* cards: live ones follow the filters; fixed ones are results of the model and only carry their own small controls */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0;position:relative}
+.card.fixed{background:var(--surface-3);border:1px dashed var(--line-2)}
+.card.fixed::before{content:"fixed result · does not follow the filters";position:absolute;top:8px;right:12px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
+.card .ct{font-size:14px;font-weight:700;margin:0;padding-right:200px}
 .card .cs{font-size:12.5px;color:var(--ink-faint);margin:0 0 6px}
-.g2{display:grid;grid-template-columns:1fr;gap:16px}
+.g2{display:grid;grid-template-columns:1fr;gap:14px}
 @media(min-width:900px){.g2{grid-template-columns:1.25fr .75fr}.g2.even{grid-template-columns:1fr 1fr}}
 svg.chart{width:100%;height:auto;display:block;overflow:visible}
 svg.chart text{font-family:var(--text)}
 text.axis{font-size:11px;fill:var(--ink-faint)}
 text.lab{font-size:11px;font-weight:600}
 .gridline{stroke:var(--line);stroke-width:1}
-.readout{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft);max-width:none}
+.readout{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft);max-width:none}
 .readout b{color:var(--ink)}
 .note{font-size:12.5px;color:var(--ink-faint);margin:8px 0 0}
-.fixed{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-soft);border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-soft);border-radius:999px;padding:2px 8px;vertical-align:middle}
+
+/* collapsible section */
+details.sec{margin-top:36px}
+details.sec>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::before{content:"▸";color:var(--plum);font-size:14px;width:14px}
+details.sec[open]>summary::before{content:"▾"}
+details.sec>summary .sub{font-size:13px;color:var(--ink-faint)}
+details.sec .body{margin-top:12px}
 
 /* claim strip */
 .kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:2px}
+.kpi{background:var(--surface-3);border:1px dashed var(--line-2);border-radius:12px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:2px}
 .kpi .kl{font-size:12.5px;font-weight:600;color:var(--ink-soft);min-height:2.5em}
 .kpi .kv{font-family:var(--head);font-weight:800;font-size:30px;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .kpi .ku{font-size:12px;color:var(--ink-faint);font-weight:600}
@@ -97,26 +133,32 @@ text.lab{font-size:11px;font-weight:600}
 .kpi .kr{font-size:12.5px;color:var(--ink-soft);margin-top:5px}
 .kpi.lead-kpi .kv{color:var(--plum)}
 
-/* map */
+/* map + ranked list */
 #map{overflow:hidden}
 #map path.land{fill:var(--absent);stroke:var(--bg);stroke-width:.6}
 #map path.c,#map circle.c{stroke:var(--bg);stroke-width:.7;cursor:pointer;transition:opacity .15s}
 #map .c.sel{stroke:var(--ink);stroke-width:2}
-#map .c.dim{opacity:.25}
+#map .c.dim{opacity:.22}
 #map text.isl{font-size:10px;fill:var(--ink-faint);pointer-events:none}
 .legend{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--ink-faint);margin-top:8px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:baseline;border-radius:2px}
 .ramp{width:140px;height:10px;border-radius:3px;border:1px solid var(--line)}
-.rank{list-style:none;margin:0;padding:0;max-height:520px;overflow:auto;font-size:13.5px}
-.rank li{display:grid;grid-template-columns:24px 1fr 62px 110px;gap:8px;align-items:center;padding:3px 4px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:4px}
-.rank li:hover{background:var(--surface-2)}
+.presets{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 8px}
+.rank{list-style:none;margin:0;padding:0;max-height:560px;overflow:auto;font-size:13.5px}
+.rank li{display:grid;grid-template-columns:22px 22px 1fr 58px 96px;gap:6px;align-items:center;padding:3px 4px;border-bottom:1px solid var(--line);border-radius:4px}
+.rank li.off{opacity:.45}
 .rank li.sel{background:var(--tint-plum)}
-.rank .n{color:var(--ink-faint);font-variant-numeric:tabular-nums;font-size:12px}
+.rank li:hover{background:var(--surface-2)}
+.rank input{margin:0;accent-color:var(--plum);cursor:pointer}
+.rank .n{color:var(--ink-faint);font-variant-numeric:tabular-nums;font-size:12px;text-align:right}
+.rank .name{all:unset;cursor:pointer;color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank .name:hover{color:var(--plum);text-decoration:underline}
 .rank .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
 .rank .bw{height:8px;background:var(--absent);border-radius:4px;position:relative;overflow:hidden}
 .rank .bi{position:absolute;top:0;bottom:0;left:0;border-radius:4px}
+.tails li{grid-template-columns:1fr auto;cursor:pointer}
 
 /* trends */
-.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:baseline;border-radius:2px}
 .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .badge{font-size:12px;font-weight:600;border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;color:var(--ink-soft);background:var(--surface-2)}
 .badge.pos{border-color:var(--green-deep);color:var(--green-deep);background:var(--tint-green)}
@@ -124,9 +166,10 @@ text.lab{font-size:11px;font-weight:600}
 
 /* tables */
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:640px}
-th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--line);white-space:nowrap}
-th{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;position:sticky;top:0;background:var(--surface);user-select:none}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{white-space:nowrap}
+th{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;position:sticky;top:0;background:var(--surface);user-select:none;white-space:normal;line-height:1.25;vertical-align:bottom;max-width:9em}
 th[data-k]{cursor:pointer}
 th[aria-sort] span::after{content:" ▾";color:var(--plum)}
 th[aria-sort="ascending"] span::after{content:" ▴"}
@@ -135,13 +178,15 @@ tbody tr{cursor:pointer}
 tbody tr:hover{background:var(--surface-2)}
 tbody tr.sel{background:var(--tint-plum)}
 tbody tr.hl td:first-child{box-shadow:inset 3px 0 0 var(--gold)}
-.bar8{display:block;height:8px;border-radius:999px;background:var(--absent);min-width:70px;position:relative;overflow:hidden}
+.card.fixed .tablewrap,.card.fixed th{background:var(--surface-3)}
+.card.fixed tbody tr{cursor:default}.card.fixed tbody tr:hover{background:transparent}
+.bar8{display:block;height:8px;border-radius:999px;background:var(--absent);min-width:64px;position:relative;overflow:hidden}
 .bar8 i{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--plum-soft)}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:var(--surface-2);padding:1px 5px;border-radius:4px}
-details{margin-top:10px;font-size:14px}
-summary{cursor:pointer;font-weight:600;color:var(--ink-soft)}
+details.numbers{margin-top:10px;font-size:14px}
+details.numbers summary{cursor:pointer;font-weight:600;color:var(--ink-soft)}
 .rulegrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));margin-top:12px}
-.rule{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
 .rule h3{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
 .rule h3 small{font-weight:500;color:var(--ink-faint);font-size:12px;white-space:nowrap}
 .rule ul{margin:6px 0 0;padding:0;list-style:none;font-size:12.5px;color:var(--ink-soft)}
@@ -149,11 +194,15 @@ summary{cursor:pointer;font-weight:600;color:var(--ink-soft)}
 .rule li code{display:block;margin-bottom:2px;color:var(--ink);white-space:normal;word-break:break-word}
 .rule.cur{border-color:var(--plum);box-shadow:0 0 0 2px var(--tint-plum)}
 
-footer.site{border-top:1px solid var(--line);margin-top:64px;padding-block:22px 44px;font-size:13px;color:var(--ink-faint)}
-footer.site p{max-width:86ch}
+footer.site{border-top:1px solid var(--line);margin-top:56px;padding-block:20px 44px;font-size:13px;color:var(--ink-faint)}
+footer.site p{max-width:86ch;margin:0 0 10px}
+ul.foot{list-style:none;margin:0;padding:0;max-width:86ch}
+ul.foot li{padding:3px 0;border-top:1px solid var(--line)}
 .tip{position:fixed;pointer-events:none;z-index:60;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.45;padding:7px 10px;border-radius:7px;opacity:0;transition:opacity .1s;max-width:260px}
 .tip b{font-size:13px}
 .tip small{opacity:.8}
+.wide{overflow-x:auto}.wide svg.chart{min-width:720px}
+@media(max-width:700px){.card.fixed::before{position:static;display:block;margin-bottom:6px}.card .ct{padding-right:0}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -161,168 +210,305 @@ footer.site p{max-width:86ch}
 
 <header class="site"><div class="wrap">
   <a class="brand" href="./">Primary <span>Pea</span> · The Delivery Gap</a>
-  <nav class="site">
-    <a href="https://primary-pea.github.io/">Project site</a>
-    <a href="https://primary-pea.github.io/ink-and-iron/">The deck</a>
-    <a href="https://primary-pea.github.io/method/">Method</a>
-    <a href="https://github.com/primary-pea/wid-datathon-2026">Code &amp; data</a>
-  </nav>
+  <nav class="site"><a href="https://primary-pea.github.io/">Project site</a><a href="https://primary-pea.github.io/ink-and-iron/">The deck</a><a href="https://primary-pea.github.io/method/">Method</a><a href="https://github.com/primary-pea/wid-datathon-2026">Code &amp; data</a></nav>
 </div></header>
 
 <main class="wrap">
   <p class="eyebrow">Women in Data 2026 · What's Cooking · Eat track</p>
-  <h1>Policies are written. Anaemia is measured.</h1>
-  <p class="lead">Forty-nine sub-Saharan African countries, twenty-four years, one registry of what governments wrote down and one set of estimates of what was measured in women. Pick an outcome, a policy cluster, a year and a country; every panel follows. Nothing is computed here — every figure is read from the same hash-stamped result files as the written report.</p>
-  <p class="stamp">Scaffold v2.0 · data version <code id="dv">…</code> · results generated <span id="ra">…</span> · <a href="#" id="share">copy a link to this view</a></p>
+  <div class="hero">
+    <div class="sechead" style="margin:0"><h1>Policies are written. Anaemia is measured.</h1>
+      <button class="info" type="button" aria-label="About this page" aria-expanded="false" data-pop="pop-hero">i</button>
+      <div class="pop" id="pop-hero" hidden><b>How this page is built</b>
+<svg viewBox="0 0 560 96" role="img" aria-label="Twelve sources are joined into one guarded panel, the model is fitted with every guard, the results are hash-stamped, and this page reads them" style="width:100%;height:auto;display:block;margin:8px 0 4px;color:var(--ink)">
+  <defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="currentColor"/></marker></defs>
+  <g fill="none" stroke="currentColor" stroke-width="1.2">
+    <rect x="2" y="18" width="108" height="46" rx="8"/><rect x="140" y="18" width="116" height="46" rx="8"/><rect x="286" y="18" width="108" height="46" rx="8"/><rect x="424" y="18" width="76" height="46" rx="8"/><rect x="526" y="18" width="32" height="46" rx="8" stroke="var(--plum)"/>
+    <line x1="110" y1="41" x2="138" y2="41" marker-end="url(#ah)"/><line x1="256" y1="41" x2="284" y2="41" marker-end="url(#ah)"/><line x1="394" y1="41" x2="422" y2="41" marker-end="url(#ah)"/><line x1="500" y1="41" x2="524" y2="41" marker-end="url(#ah)"/>
+  </g>
+  <g font-size="11" font-weight="600" fill="currentColor" text-anchor="middle">
+    <text x="56" y="37">12 sources</text><text x="56" y="52" font-weight="400" font-size="10">WHO, UNICEF, FAO…</text>
+    <text x="198" y="37">one guarded panel</text><text x="198" y="52" font-weight="400" font-size="10">49 × 24 · 24 tests</text>
+    <text x="340" y="37">model + guards</text><text x="340" y="52" font-weight="400" font-size="10">ladder · 336 specs</text>
+    <text x="462" y="37">results/</text><text x="462" y="52" font-weight="400" font-size="10">hash-stamped</text>
+    <text x="542" y="45" fill="var(--plum)">you</text>
+  </g>
+  <g font-size="10" fill="var(--ink-faint)" text-anchor="middle"><text x="124" y="80">join, refuse gaps</text><text x="270" y="80">fit</text><text x="408" y="80">write</text><text x="512" y="80">read</text></g>
+</svg>
+<ul>
+  <li><b>Plain panels</b> follow the filter bar and the country list.</li>
+  <li><b>Shaded panels</b> are fixed results of the model, with only their own small controls.</li>
+  <li><b>Nothing is computed here.</b> Four precomputed files, written from the same result files as the written report.</li>
+  <li>Pick an outcome and a cluster · tick countries in the ranked list · click one to <b>focus</b> it · <b>copy a link</b> to keep the view.</li>
+</ul><button class="x" type="button" aria-label="Close">×</button></div>
+    </div>
+    <p class="stamp">Scaffold v2.0 · data <code id="dv">…</code> · results <span id="ra">…</span> · <a href="#" id="share">copy a link to this view</a></p>
+  </div>
 
   <div class="bar" id="bar">
-    <div class="f"><span class="lbl">Outcome</span><select id="f-out"></select></div>
-    <div class="f"><span class="lbl">Policy cluster</span><select id="f-cl"></select></div>
-    <div class="f"><span class="lbl">Map shows</span><div class="seg" id="f-metric">
-      <button type="button" data-v="level">level</button><button type="button" data-v="change">change</button><button type="button" data-v="policies">policies</button><button type="button" data-v="gap">gap vs context</button><button type="button" data-v="concern">concern</button></div></div>
-    <div class="f"><span class="lbl">Year</span><div class="years"><input type="range" id="f-year" min="2000" max="2023" step="1"><span class="yr" id="f-yearl"></span></div></div>
-    <div class="f"><span class="lbl">Change window</span><div class="years"><input type="range" id="f-from" min="2000" max="2022" step="1"><span class="yr" id="f-winl"></span><input type="range" id="f-to" min="2001" max="2023" step="1"></div></div>
-    <div class="f"><span class="lbl">Countries</span><div class="seg" id="f-region"><button type="button" data-v="all">all 49</button><button type="button" data-v="WCA">West &amp; Central</button><button type="button" data-v="ESA">Eastern &amp; Southern</button></div></div>
-    <div class="f"><span class="lbl">Country</span><select id="f-iso"></select></div>
-    <div class="f"><span class="lbl">&nbsp;</span><button class="ghost" id="f-reset" type="button">Reset</button></div>
+    <div class="f" id="g-out"><span class="lbl">Outcome <small id="h-out"></small></span><select id="f-out"></select></div>
+    <div class="f" id="g-cl"><span class="lbl">Policy cluster <small id="h-cl"></small></span><select id="f-cl"></select></div>
+    <div class="f grow"><span class="lbl">Map colours by</span><div class="seg" id="f-metric">
+      <button type="button" data-v="level">outcome level</button><button type="button" data-v="change">outcome change</button><button type="button" data-v="policies">cluster policies</button><button type="button" data-v="gap">gap vs context</button><button type="button" data-v="concern">concern</button></div></div>
+    <div class="f" id="g-year"><span class="lbl">Year <small id="h-year"></small></span><div class="years"><input type="range" id="f-year" min="2000" max="2023" step="1"><span class="yr" id="f-yearl"></span></div></div>
+    <div class="f" id="g-win"><span class="lbl">Change window <small id="h-win"></small></span><div class="years"><input type="range" id="f-from" min="2000" max="2022" step="1"><span class="yr" id="f-winl"></span><input type="range" id="f-to" min="2001" max="2023" step="1"></div></div>
+    <div class="f" style="justify-content:flex-end"><span class="lbl">&nbsp;</span><button class="ghost" id="f-reset" type="button">Reset</button></div>
   </div>
   <p class="answer" id="answer"></p>
-
-  <section id="claim">
-    <div class="sechead"><h2>What the model found <span class="fixed">anaemia × anaemia policies</span></h2>
-      <p>Four numbers with their uncertainty attached. The headline is a null result; the interesting part is how much it does and does not rule out. These are fixed: the model was fitted on anaemia in women 15–49 and the anaemia-cluster policies. The selectors above change the descriptive panels and light up the matching rows in the ladder further down.</p></div>
-    <div class="kpis" id="kpis"></div>
-  </section>
+  <p class="keyline"><span><i class="live"></i>plain panels follow the filters and the country list</span><span><i class="fx"></i>shaded panels are fixed results of the model, with their own small controls</span></p>
 
   <section id="mapsec">
-    <div class="sechead"><h2 id="map-h">Where</h2><p id="map-p"></p></div>
+    <div class="sechead"><h2 id="map-h">Where</h2><button class="info" type="button" aria-label="About the map" aria-expanded="false" data-pop="pop-map">i</button>
+      <div class="pop" id="pop-map" hidden><b>What the colours mean</b>
+<ul>
+  <li><b>outcome level</b> — the chosen outcome in the chosen year</li>
+  <li><b>outcome change</b> — its change over the window; green fell, plum rose</li>
+  <li><b>cluster policies</b> — records of the chosen cluster active in the year: what was <i>written</i>, not what reached anyone</li>
+  <li><b>gap vs context</b> — anaemia against what income, malaria, fertility, urbanisation, sanitation and geography predict (43 countries)</li>
+  <li><b>concern</b> — the team's concern score, explained under the watchlist</li>
+</ul>
+<b>How to use it</b>
+<ul>
+  <li>Click a country, or its name in the list, to <b>focus</b> it in every panel.</li>
+  <li><b>Tick and untick</b> countries, or use a preset, to choose which ones the panels use.</li>
+  <li>Islands too small to draw are dots. Where a series ends before the chosen year, the latest value within three years is used and the subtitle says so.</li>
+</ul><button class="x" type="button" aria-label="Close">×</button></div></div>
     <div class="g2">
       <div class="card">
-        <p class="ct" id="map-title"></p><p class="cs" id="map-sub"></p>
+        <p class="ct" id="map-title" style="padding-right:0"></p><p class="cs" id="map-sub"></p>
         <svg class="chart" id="map" viewBox="0 0 700 620" role="img" aria-label="Map of 49 sub-Saharan African countries coloured by the chosen metric"></svg>
         <div class="legend" id="map-legend"></div>
       </div>
       <div class="card">
-        <p class="ct" id="rank-title"></p><p class="cs" id="rank-sub"></p>
-        <input type="search" id="rank-q" placeholder="Find a country…" aria-label="Find a country" style="width:100%;margin-bottom:8px">
+        <p class="ct" id="rank-title" style="padding-right:0"></p><p class="cs" id="rank-sub"></p>
+        <div class="presets" id="presets"></div>
+        <input type="search" id="rank-q" placeholder="Find a country…" aria-label="Find a country" style="width:100%;margin-bottom:6px">
         <ol class="rank" id="rank"></ol>
       </div>
     </div>
   </section>
 
+  <details class="sec" id="claim">
+    <summary><h2>What the model found</h2><span class="tag">anaemia × anaemia policies</span><span class="sub">four headline numbers with their uncertainty · click to open</span></summary>
+    <div class="body">
+      <div class="sechead"><button class="info" type="button" aria-label="About these numbers" aria-expanded="false" data-pop="pop-claim">i</button><span class="sub">The headline is a null result; the interesting part is how much it does and does not rule out.</span>
+        <div class="pop" id="pop-claim" hidden><b>Why these four are fixed</b>
+<ul>
+  <li>The model was fitted on <b>anaemia in women 15–49</b> and the <b>anaemia-cluster policies</b>; it cannot be re-fitted in a browser.</li>
+  <li>The selectors above change the descriptive panels and <b>light up the matching rows</b> in the ladder further down.</li>
+</ul>
+<b>How to read them</b>
+<ul>
+  <li>An interval that <b>crosses zero</b> is a null, not a benefit.</li>
+  <li>A <b>future</b> policy predicting <b>current</b> anaemia means something else moves both.</li>
+  <li>The equivalence test says what size of effect the data <b>rule out</b>, not that the effect is zero.</li>
+  <li>Leave-one-country-out asks whether policy <b>helps forecast</b> a country the model never saw.</li>
+</ul><button class="x" type="button" aria-label="Close">×</button></div></div>
+      <div class="kpis" id="kpis"></div>
+    </div>
+  </details>
+
   <section id="trends">
-    <div class="sechead"><h2>Documents and blood, on the same years</h2>
-      <p>Two panels, one time axis. The top panel counts what governments have written down in the chosen cluster; the bottom panel is what was measured. Move across the chart to read both in any year. The shaded band is the change window.</p></div>
+    <div class="sechead"><h2>Documents and blood, on the same years</h2><button class="info" type="button" aria-label="About this chart" aria-expanded="false" data-pop="pop-tr">i</button>
+      <div class="pop" id="pop-tr" hidden><b>Reading the two panels</b>
+<ul>
+  <li><b>Top, gold</b> — records of the chosen cluster active in each year (WHO GIFNA).</li>
+  <li><b>Bottom, plum</b> — the chosen outcome, from the source named under the title.</li>
+  <li><b>Shaded band</b> — the change window from the bar.</li>
+  <li><b>Dotted markers</b> — a focused country's first dated anaemia policy and its flour-fortification mandate.</li>
+  <li><b>Move across</b> the chart to read both values in any year; <b>Show the numbers</b> gives the table.</li>
+  <li>With no country in focus, both panels <b>average the ticked countries</b>.</li>
+</ul><button class="x" type="button" aria-label="Close">×</button></div></div>
     <div class="card" id="trendcard">
       <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end">
-        <div><p class="ct" id="tr-title"></p><p class="cs" id="tr-sub"></p></div>
+        <div><p class="ct" id="tr-title" style="padding-right:0"></p><p class="cs" id="tr-sub"></p></div>
         <div class="legend"><span><i style="background:var(--gold)"></i><span id="lg-cl"></span></span><span><i style="background:var(--plum)"></i><span id="lg-out"></span></span></div>
       </div>
       <svg class="chart" id="c-stock" viewBox="0 0 900 150" role="img" aria-label="Policies on the books over time"></svg>
       <svg class="chart" id="c-out" viewBox="0 0 900 180" role="img" aria-label="Outcome over time"></svg>
       <div class="readout" id="tr-read"></div>
       <div class="badges" id="badges"></div>
-      <details><summary>Show the numbers</summary>
+      <details class="numbers"><summary>Show the numbers</summary>
         <div class="tablewrap" style="margin-top:10px"><table id="yeartable"><thead><tr><th><span>Year</span></th><th class="num" id="yt-cl"></th><th class="num" id="yt-out"></th></tr></thead><tbody></tbody></table></div>
       </details>
     </div>
   </section>
 
   <section id="scattersec">
-    <div class="sechead"><h2>Having more policies does not predict doing better</h2>
-      <p>Each dot is a country. Across: how many policies of the chosen cluster it had on the books, averaged over the change window. Up the side: your choice — the change in the outcome over the window, or how far anaemia sits from what income, health burden and geography predict. Below the line is better.</p></div>
+    <div class="sechead"><h2>Having more policies does not predict doing better</h2><button class="info" type="button" aria-label="About this chart" aria-expanded="false" data-pop="pop-sc">i</button>
+      <div class="pop" id="pop-sc" hidden><b>Axes</b>
+<ul>
+  <li><b>Across</b> — records of the chosen cluster on the books, averaged over the window.</li>
+  <li><b>Up, your choice</b> — the outcome's change over the window · anaemia against what <b>context</b> predicts · anaemia against what <b>income alone</b> predicts.</li>
+  <li><b>Below the line is better</b> on every setting.</li>
+</ul>
+<b>Marks</b>
+<ul>
+  <li>Green circles and plum triangles are the two <b>eight-country tails</b> of the context ranking; hollow circles are the rest.</li>
+  <li>The correlation under the chart is <b>descriptive</b>. The guards live in the shaded panels.</li>
+  <li>The tails card beside the chart is <b>fixed</b>: it does not move with the filters.</li>
+</ul><button class="x" type="button" aria-label="Close">×</button></div></div>
     <div class="g2">
       <div class="card">
         <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:6px">
-          <p class="ct" id="sc-title" style="margin:0"></p>
+          <p class="ct" id="sc-title" style="margin:0;padding-right:0"></p>
           <div class="seg" id="f-y2"><button type="button" data-v="change">change over window</button><button type="button" data-v="resid">gap vs context</button><button type="button" data-v="resid_income">gap vs income</button></div>
         </div>
         <svg class="chart" id="c-scatter" viewBox="0 0 760 440" role="img" aria-label="Scatter of policy stock against the chosen outcome measure, one dot per country"></svg>
         <div class="legend"><span><i style="background:var(--green-deep);border-radius:50%"></i>Better than context predicts</span><span><i style="background:var(--plum)"></i>Worse than context predicts</span><span><i style="background:transparent;border:1.5px solid var(--ink-faint);border-radius:50%"></i>The rest</span></div>
         <div class="readout" id="sc-read"></div>
       </div>
-      <div class="card">
-        <h3>Doing better than predicted</h3><ul class="rank" id="tail-pos" style="max-height:none"></ul>
-        <h3 style="margin-top:14px">Doing worse than predicted</h3><ul class="rank" id="tail-neg" style="max-height:none"></ul>
+      <div class="card fixed">
+        <p class="ct">The two tails</p><p class="cs">Anaemia against the context model, 2015–2023 · click a name to focus it</p>
+        <h3>Doing better than predicted</h3><ul class="rank tails" id="tail-pos" style="max-height:none"></ul>
+        <h3 style="margin-top:14px">Doing worse than predicted</h3><ul class="rank tails" id="tail-neg" style="max-height:none"></ul>
         <p class="note" id="tail-note"></p>
       </div>
     </div>
   </section>
 
   <section id="laddersec">
-    <div class="sechead"><h2>The model, honestly <span class="fixed">anaemia × anaemia policies</span></h2>
-      <p>The main estimate re-fitted under every guard we could think of. Each row is one change to the recipe; the dot is the estimate and the bar its 95% interval, all in points of anaemia per policy. Toggle the blocks; hover a row for the sample and the corrected p-values.</p></div>
-    <div class="card">
-      <div class="chips" id="ladder-blocks"></div>
-      <svg class="chart" id="c-ladder" viewBox="0 0 900 200" role="img" aria-label="Ladder of estimates with intervals"></svg>
+    <div class="sechead"><h2>The model, honestly</h2><span class="tag">anaemia × anaemia policies</span><button class="info" type="button" aria-label="About the ladder" aria-expanded="false" data-pop="pop-ld">i</button>
+      <div class="pop" id="pop-ld" hidden><b>What a row is</b>
+<ul>
+  <li>The main estimate re-fitted with <b>one change</b> to the recipe. Dot = estimate, bar = 95% interval, all in points of anaemia per policy.</li>
+  <li>Hover a row for the sample, and the <b>Benjamini–Hochberg</b> and <b>wild cluster bootstrap</b> p-values where they exist.</li>
+</ul>
+<b>The blocks</b>
+<ul>
+  <li><b>Other lags</b> — two and five years instead of three</li>
+  <li><b>Sample and income guards</b> — drop thin countries; income in current US$</li>
+  <li><b>Lead test</b> — policies three years in the <i>future</i>; a real effect should not show here</li>
+  <li><b>Country-specific trends</b> — each country allowed its own slope</li>
+  <li><b>Brackets</b> — first differences, five-year differences, lagged outcome</li>
+  <li><b>One extra control at a time</b> — malaria, fertility, urban share, HIV, sanitation, employment, deworming</li>
+  <li><b>Subsamples</b> — shorter windows where an extra control exists</li>
+</ul>
+<b>The two smaller panels</b> — the same dose against each outcome the bar offers, and other ways of counting the dose against anaemia.<button class="x" type="button" aria-label="Close">×</button></div></div>
+    <div class="card fixed">
+      <div class="chips" id="ladder-blocks" style="margin-top:18px"></div>
+      <div class="wide"><svg class="chart" id="c-ladder" viewBox="0 0 900 200" role="img" aria-label="Ladder of estimates with intervals"></svg></div>
     </div>
-    <div class="g2 even" style="margin-top:16px">
-      <div class="card">
-        <p class="ct">Same dose, other outcomes</p><p class="cs">Anaemia-cluster policies against each outcome the selector offers. The chosen outcome is highlighted.</p>
+    <div class="g2 even" style="margin-top:14px">
+      <div class="card fixed">
+        <p class="ct">Same dose, other outcomes</p><p class="cs">The chosen outcome is highlighted.</p>
         <svg class="chart" id="c-outcomes" viewBox="0 0 560 190" role="img" aria-label="Estimates for other outcomes"></svg>
       </div>
-      <div class="card">
-        <p class="ct">Other ways of counting the dose</p><p class="cs">Units differ by row, so these are a table rather than a shared axis. Fortification rows light up when that cluster is chosen.</p>
-        <div class="tablewrap" style="border:0"><table id="alt" style="min-width:0"><thead><tr><th>Dose</th><th class="num">Estimate</th><th class="num">95% interval</th><th class="num">p</th><th>Unit</th></tr></thead><tbody></tbody></table></div>
+      <div class="card fixed">
+        <p class="ct">Other ways of counting the dose</p><p class="cs">Units differ by row, so a table rather than a shared axis. Fortification rows light up when that cluster is chosen.</p>
+        <div class="tablewrap" style="border:0"><table id="alt"><thead><tr><th>Dose</th><th class="num">Estimate</th><th class="num">95% interval</th><th class="num">p</th><th>Unit</th></tr></thead><tbody></tbody></table></div>
       </div>
     </div>
   </section>
 
   <section id="eventsec">
-    <div class="sechead"><h2>Around the moment a policy arrives <span class="fixed">anaemia</span></h2>
-      <p>Event studies: anaemia in the years before and after a country's first dated anaemia policy, or its wheat-flour fortification mandate, relative to the year before. Three estimators, because staggered adoption is where two-way fixed effects can mislead.</p></div>
-    <div class="card">
-      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px">
-        <div class="seg" id="f-event"></div><div class="seg" id="f-est"></div>
-      </div>
-      <svg class="chart" id="c-event" viewBox="0 0 900 260" role="img" aria-label="Event-study coefficients by year relative to the event"></svg>
+    <div class="sechead"><h2>Around the moment a policy arrives</h2><span class="tag">anaemia</span><button class="info" type="button" aria-label="About the event studies" aria-expanded="false" data-pop="pop-ev">i</button>
+      <div class="pop" id="pop-ev" hidden><b>The set-up</b>
+<ul>
+  <li>Anaemia in the years around an event, relative to the year before it (<b>−1</b>).</li>
+  <li><b>Two events</b> — a country's first dated anaemia policy · its wheat-flour fortification mandate.</li>
+</ul>
+<b>Three estimators, because countries adopt at different times</b>
+<ul>
+  <li><b>Two-way fixed effects</b> — the textbook version; can mislead under staggered adoption</li>
+  <li><b>Two-stage DiD (Gardner)</b> — removes country and year effects first, then compares</li>
+  <li><b>Local-projections DiD</b> — one clean comparison per horizon</li>
+</ul>
+<b>What to look for</b> — a flat line <i>before</i> the event. If the pre-event years already move, the comparison group is contaminated and the post-event dip cannot be credited to the policy.<button class="x" type="button" aria-label="Close">×</button></div></div>
+    <div class="card fixed">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin:18px 0 8px"><div class="seg" id="f-event"></div><div class="seg" id="f-est"></div></div>
+      <div class="wide"><svg class="chart" id="c-event" viewBox="0 0 900 260" role="img" aria-label="Event-study coefficients by year relative to the event"></svg></div>
       <div class="readout" id="ev-read"></div>
     </div>
   </section>
 
   <section id="validsec">
-    <div class="sechead"><h2>Predict a country the model never saw <span class="fixed">anaemia</span></h2>
-      <p>Leave one country out, fit on the other 48, predict its within-country deviations. If policy carried information, adding it would lower the error. The strip shows, for each country, how much the policy term changed the error — left of zero means it helped.</p></div>
+    <div class="sechead"><h2>Predict a country the model never saw</h2><span class="tag">anaemia</span><button class="info" type="button" aria-label="About the validation" aria-expanded="false" data-pop="pop-lo">i</button>
+      <div class="pop" id="pop-lo" hidden><b>The procedure</b>
+<ul>
+  <li>Leave one country out → fit on the other 48 → predict its within-country deviations → measure the error.</li>
+  <li>Repeat for all 49; compare six models from a flat line to income plus every exposure.</li>
+</ul>
+<b>Reading it</b>
+<ul>
+  <li>If policy carried information, adding it would <b>lower</b> the error. It does not.</li>
+  <li><b>Left</b> of zero in the strip: the policy term helped that country's forecast. <b>Right</b>: it hurt.</li>
+  <li>The country in focus is outlined; click any dot to focus it.</li>
+</ul><button class="x" type="button" aria-label="Close">×</button></div></div>
     <div class="g2 even">
-      <div class="card"><p class="ct">Forecast error by model</p><p class="cs">Root mean squared error, points of anaemia; lower is better</p>
+      <div class="card fixed"><p class="ct">Forecast error by model</p><p class="cs">Root mean squared error, points of anaemia; lower is better</p>
         <svg class="chart" id="c-loco" viewBox="0 0 560 210" role="img" aria-label="Forecast error by model"></svg></div>
-      <div class="card"><p class="ct">Did the policy term help, country by country?</p><p class="cs" id="lo-sub"></p>
+      <div class="card fixed"><p class="ct">Did the policy term help, country by country?</p><p class="cs" id="lo-sub"></p>
         <svg class="chart" id="c-loco2" viewBox="0 0 560 210" role="img" aria-label="Per-country change in forecast error from adding policy"></svg></div>
     </div>
   </section>
 
   <section id="watchlist">
-    <div class="sechead"><h2>Where attention should go</h2>
-      <p>The team's concern score over four women's nutrition indicators: a country is flagged for sitting in the worst quarter and for failing to improve, and its percentile is added. The weighting is a judgement call, so the last column shows how often a country still lands in the worst ten when the four weights are drawn at random 500 times. Hover a row for the four component scores.</p></div>
+    <div class="sechead"><h2>Where attention should go</h2><button class="info" type="button" aria-label="About the concern score" aria-expanded="false" data-pop="pop-wl">i</button>
+      <div class="pop" id="pop-wl" hidden><b>How the score is built</b> — for each of four indicators (anaemia 15–49, anaemia in pregnancy, underweight, overweight), a flag plus the country's percentile on the latest level:
+<table style="margin:6px 0 8px;min-width:0;font-size:13px"><tbody>
+  <tr><td class="num" style="padding:3px 8px 3px 0"><b>0</b></td><td style="padding:3px 0;white-space:normal">improved over the window</td></tr>
+  <tr><td class="num" style="padding:3px 8px 3px 0"><b>1</b></td><td style="padding:3px 0;white-space:normal">started in the worst quarter and did not worsen</td></tr>
+  <tr><td class="num" style="padding:3px 8px 3px 0"><b>2</b></td><td style="padding:3px 0;white-space:normal">worsened</td></tr>
+</tbody></table>
+<ul>
+  <li>The four indicator scores are averaged with <b>equal weights</b>.</li>
+  <li><b>Rank stability</b> — the weights are a judgement call, so they are drawn at random 500 times; the bar is how often the country still lands in the worst ten.</li>
+  <li>The <b>level, change and policies</b> columns follow the filters; hover a row for the four component scores.</li>
+</ul><button class="x" type="button" aria-label="Close">×</button></div></div>
     <div class="tablewrap">
       <table id="wl"><thead><tr>
-        <th data-k="concern_rank" aria-sort="ascending"><span>#</span></th><th data-k="country"><span>Country</span></th><th data-k="subregion"><span>Region</span></th>
-        <th data-k="concern" class="num"><span>Concern</span></th><th data-k="_level" class="num" id="wl-level"><span>Level</span></th><th data-k="_change" class="num" id="wl-change"><span>Change</span></th>
+        <th data-k="concern_rank" aria-sort="ascending" class="num"><span>#</span></th><th data-k="country"><span>Country</span></th><th data-k="subregion"><span>Region</span></th>
+        <th data-k="concern" class="num"><span>Concern score</span></th><th data-k="_level" class="num" id="wl-level"><span>Level</span></th><th data-k="_change" class="num" id="wl-change"><span>Change</span></th>
         <th data-k="_pol" class="num" id="wl-pol"><span>Policies</span></th><th data-k="concern_stability"><span>Rank stability</span></th></tr></thead><tbody></tbody></table>
     </div>
   </section>
 
   <section id="specs">
-    <div class="sechead"><h2>Every way we could have cut it <span class="fixed">anaemia</span></h2>
-      <p>336 defensible specifications — seven ways of counting the dose, three lags, two income measures, with and without context controls, four estimators — each re-fitted and sorted by its estimate. Filter with the chips; hover any dot for its recipe. A dot that clears the zero line is a specification whose interval excludes no effect.</p></div>
-    <div class="card">
-      <div class="chips" id="spec-chips"></div>
-      <svg class="chart" id="c-spec" viewBox="0 0 900 240" role="img" aria-label="Specification curve"></svg>
+    <div class="sechead"><h2>Every way we could have cut it</h2><span class="tag">anaemia</span><button class="info" type="button" aria-label="About the specification curve" aria-expanded="false" data-pop="pop-sp">i</button>
+      <div class="pop" id="pop-sp" hidden><b>336 = 7 × 3 × 2 × 2 × 4</b>
+<ul>
+  <li><b>7</b> ways of counting the dose</li>
+  <li><b>3</b> lags — two, three, five years</li>
+  <li><b>2</b> income measures — constant and current US$</li>
+  <li><b>2</b> control sets — with and without context</li>
+  <li><b>4</b> estimators — fixed effects, FE with country trends, first differences, lagged outcome</li>
+</ul>
+<b>Reading it</b>
+<ul>
+  <li>Every specification re-fitted and sorted by its estimate; plum dots are the ones whose interval excludes zero.</li>
+  <li>Use the chips to keep only some recipes; hover a dot for its recipe.</li>
+  <li>If the effect were real and large, the whole curve would sit to one side. It does not.</li>
+</ul><button class="x" type="button" aria-label="Close">×</button></div></div>
+    <div class="card fixed">
+      <div class="chips" id="spec-chips" style="margin-top:18px"></div>
+      <div class="wide"><svg class="chart" id="c-spec" viewBox="0 0 900 250" role="img" aria-label="Specification curve"></svg></div>
       <div class="readout" id="spec-read"></div>
     </div>
   </section>
 
   <section id="rulesec">
-    <div class="sechead"><h2>Where the clusters come from</h2>
-      <p>Every GIFNA record carries controlled-vocabulary tokens. Each token is matched, case-insensitively, against the 47 patterns below — never against free text — and a record joins every cluster its tokens hit. Unmatched tokens are reported, not guessed. The chosen cluster is outlined; the counts are countries with at least one active record in 2023 and the mean stock.</p></div>
+    <div class="sechead"><h2>Where the clusters come from</h2><button class="info" type="button" aria-label="About the cluster rules" aria-expanded="false" data-pop="pop-ru">i</button>
+      <div class="pop" id="pop-ru" hidden><b>How a record joins a cluster</b>
+<ul>
+  <li>Every GIFNA record carries controlled-vocabulary <b>tokens</b>.</li>
+  <li>Each token is matched, case-insensitively, against the <b>47 patterns</b> below — never against free text.</li>
+  <li>A record joins <b>every</b> cluster its tokens hit; unmatched tokens are reported, not guessed.</li>
+  <li>The anaemia and fortification clusters also come split by <b>source file</b> — policies, programmes, mechanisms — and the model's dose is the dated policies file only.</li>
+</ul>
+<b>On the cards</b> — countries with at least one active record in 2023, and the mean stock. The chosen cluster is outlined; click a card to switch to it.<button class="x" type="button" aria-label="Close">×</button></div></div>
     <div class="rulegrid" id="rules"></div>
   </section>
 </main>
 
 <footer class="site"><div class="wrap">
-  <p><b>Primary Pea</b> — Ramyashree Shetty, Alison Nichols, Hope Winsor, Saarah Hossain, Tatiana Gabel. Women in Data 2026 Datathon, Eat track.</p>
-  <p>Data: WHO, UNICEF, FAOSTAT, UN IGME, World Bank, WHO GIFNA, GFDx, DHS, WHO PCT databank, Nunn &amp; Puga. Sources are listed in full on the <a href="https://primary-pea.github.io/method/">method page</a>; the panel, the pipeline and the tests are at <a href="https://github.com/primary-pea/wid-datathon-2026">github.com/primary-pea/wid-datathon-2026</a>. Map: Natural Earth via world-atlas.</p>
-  <p>This page reads four precomputed files written from the scaffold's <code>results/</code> and <code>panel/</code>. There is no server and no live query: re-running the pipeline and regenerating the files is the only way a number here can change.</p>
+  <p><b>Primary Pea</b> — Ramyashree Shetty, Alison Nichols, Hope Winsor, Saarah Hossain, Tatiana Gabel.<br>Women in Data 2026 Datathon, Eat track.</p>
+  <ul class="foot">
+    <li><b>Data</b> — WHO, UNICEF, FAOSTAT, UN IGME, World Bank, WHO GIFNA, GFDx, DHS, WHO PCT databank, Nunn &amp; Puga</li>
+    <li><b>Sources in full</b> — the <a href="https://primary-pea.github.io/method/">method page</a></li>
+    <li><b>Panel, pipeline and tests</b> — <a href="https://github.com/primary-pea/wid-datathon-2026">github.com/primary-pea/wid-datathon-2026</a></li>
+    <li><b>Map</b> — Natural Earth via world-atlas</li>
+    <li><b>This page</b> — reads four precomputed files written from the scaffold's <code>results/</code> and <code>panel/</code>; no server, no live query. Re-running the pipeline and regenerating the files is the only way a number here can change.</li>
+  </ul>
 </div></footer>
 
 <div class="tip" id="tip" role="status" aria-live="polite"></div>
@@ -333,21 +519,21 @@ footer.site p{max-width:86ch}
 <script>
 /* ============================================================ state ============================================================ */
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-const DEF = { out: "out_anaemia_wra_fs_pct", cl: "anaemia", metric: "level", year: 2023, from: 2015, to: 2023, region: "all", iso: null,
-              y2: "change", event: "anaemia_policy", est: "twfe" };
-const state = { ...DEF, blocks: new Set(["main", "lags", "guards", "lead", "trend", "bracket", "context"]), spec: {} };
-const S = {};   // loaded data
-let css = {};   // resolved colour tokens
+const DEF = { out: "out_anaemia_wra_fs_pct", cl: "anaemia", metric: "level", year: 2023, from: 2015, to: 2023, iso: null, y2: "change", event: "anaemia_policy", est: "twfe" };
+const state = { ...DEF, sel: null, blocks: new Set(["main", "lags", "guards", "lead", "trend", "bracket", "context"]), spec: {} };  // sel: null = every country ticked
+const S = {};
+let css = {};
 
 const fmt = (v, d = 1) => v === null || v === undefined || Number.isNaN(v) ? "—" : (+v).toFixed(d);
 const sgn = (v, d = 1) => v === null || v === undefined || Number.isNaN(v) ? "—" : (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(d);
 const tok = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const readTokens = () => { css = Object.fromEntries(["--plum", "--plum-soft", "--gold", "--green-deep", "--ink", "--ink-faint", "--ink-soft", "--surface", "--surface-2", "--tint-plum", "--absent", "--line-2", "--bg"].map(n => [n.slice(2), tok(n)])); };
+const readTokens = () => { css = Object.fromEntries(["--plum", "--plum-soft", "--gold", "--green-deep", "--ink", "--ink-faint", "--ink-soft", "--surface", "--surface-2", "--surface-3", "--tint-plum", "--absent", "--line-2", "--bg"].map(n => [n.slice(2), tok(n)])); };
 
 const yi = y => S.meta.years.indexOf(y);
 const C = () => S.countries;
 const byIso = iso => S.byIso[iso];
-const visible = () => state.region === "all" ? C() : C().filter(c => c.subregion === state.region);
+const ticked = iso => state.sel === null || state.sel.has(iso);
+const visible = () => C().filter(c => ticked(c.iso3));
 const outLabel = () => S.meta.outcomes[state.out].label;
 const outUnit = () => S.meta.outcomes[state.out].unit;
 const clLabel = () => S.meta.clusters[state.cl];
@@ -359,17 +545,16 @@ const anyFallback = () => visible().some(c => { const s = ser(c.iso3, "out"); re
 const regional = kind => S.meta.years.map((_, i) => meanAt(visible(), kind, i));
 const winMean = (iso, kind) => { const s = ser(iso, kind).slice(yi(state.from), yi(state.to) + 1).filter(x => x !== null); return s.length ? d3.mean(s) : null; };
 const change = iso => { const s = ser(iso, "out"), a = lastIdx(s, yi(state.from)), b = lastIdx(s, yi(state.to)); return a < 0 || b < 0 || a === b ? null : s[b] - s[a]; };
-const lowerIsBetter = true; // every outcome offered is a burden measure
 
-/* the metric the map and the ranking share */
 const METRIC = {
-  level:    { label: () => `${outLabel()}, ${state.year}`,          unit: () => outUnit(), val: c => valAt(c.iso3, "out", state.year),  div: false },
-  change:   { label: () => `Change in ${outLabel().toLowerCase()}, ${state.from}→${state.to}`, unit: () => outUnit() === "%" ? "points" : outUnit(), val: c => change(c.iso3), div: true },
-  policies: { label: () => `${clLabel()} on the books, ${state.year}`, unit: () => "records", val: c => valAt(c.iso3, "cl", state.year), div: false },
-  gap:      { label: () => "Anaemia against what context predicts, 2015–2023", unit: () => "points", val: c => c.resid_context, div: true },
-  concern:  { label: () => "Concern score (four women's indicators)", unit: () => "score", val: c => c.concern, div: false },
+  level:    { label: () => `${outLabel()}, ${state.year}`, unit: () => outUnit(), val: c => valAt(c.iso3, "out", state.year), div: false, uses: ["out", "year"] },
+  change:   { label: () => `Change in ${outLabel().toLowerCase()}, ${state.from}→${state.to}`, unit: () => outUnit() === "%" ? "points" : outUnit(), val: c => change(c.iso3), div: true, uses: ["out", "win"] },
+  policies: { label: () => `${clLabel()} on the books, ${state.year}`, unit: () => "records", val: c => valAt(c.iso3, "cl", state.year), div: false, uses: ["cl", "year"] },
+  gap:      { label: () => "Anaemia against what context predicts, 2015–2023", unit: () => "points", val: c => c.resid_context, div: true, uses: [] },
+  concern:  { label: () => "Concern score (four women's indicators)", unit: () => "score", val: c => c.concern, div: false, uses: [] },
 };
 const mval = c => { const v = METRIC[state.metric].val(c); return v === null || v === undefined || Number.isNaN(v) ? null : v; };
+const mfmt = v => METRIC[state.metric].div ? sgn(v, 1) : fmt(v, state.metric === "policies" ? 0 : 1);
 
 /* ============================================================ helpers ============================================================ */
 const el = (n, a = {}) => { const e = document.createElementNS("http://www.w3.org/2000/svg", n); for (const [k, v] of Object.entries(a)) if (v !== null && v !== undefined) e.setAttribute(k, v); return e; };
@@ -379,28 +564,35 @@ const showTip = (e, html) => { tip.innerHTML = html; tip.style.opacity = 1; move
 const moveTip = e => { const p = e.touches ? e.touches[0] : e; tip.style.left = Math.min(p.clientX + 14, innerWidth - tip.offsetWidth - 10) + "px"; tip.style.top = Math.max(p.clientY - tip.offsetHeight - 12, 8) + "px"; };
 const hideTip = () => { tip.style.opacity = 0; };
 const hover = (node, html) => { node.addEventListener("mouseenter", e => showTip(e, typeof html === "function" ? html() : html)); node.addEventListener("mousemove", moveTip); node.addEventListener("mouseleave", hideTip); };
-const select = iso => { state.iso = iso === state.iso ? null : iso; $("#f-iso").value = state.iso || ""; render(); };
+const select = iso => { state.iso = iso === state.iso ? null : iso; render(); };
 const pressed = (containerSel, v) => $$(containerSel + " button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === String(v))));
 const colorScale = () => {
   const vals = visible().map(mval).filter(v => v !== null);
-  if (!vals.length) return () => css.absent;
-  if (METRIC[state.metric].div) {
-    const m = d3.max(vals.map(Math.abs)) || 1;
-    return d3.scaleDiverging(t => d3.interpolateRgbBasis([css["green-deep"], css["surface-2"], css.plum])(t)).domain([-m, 0, m]);
-  }
+  if (!vals.length) return Object.assign(() => css.absent, { domain: () => [0, 1] });
+  if (METRIC[state.metric].div) { const m = d3.max(vals.map(Math.abs)) || 1; return d3.scaleDiverging(t => d3.interpolateRgbBasis([css["green-deep"], css["surface-2"], css.plum])(t)).domain([-m, 0, m]); }
   return d3.scaleSequential(d3.interpolateRgb(css["tint-plum"], css.plum)).domain(d3.extent(vals));
 };
+
+/* popovers */
+function wirePops() {
+  const closeAll = () => { $$(".pop").forEach(p => p.hidden = true); $$(".info").forEach(b => b.setAttribute("aria-expanded", "false")); };
+  $$(".info").forEach(b => b.addEventListener("click", e => { e.stopPropagation(); const p = document.getElementById(b.dataset.pop), open = p.hidden; closeAll(); if (open) { p.hidden = false; b.setAttribute("aria-expanded", "true"); } }));
+  $$(".pop").forEach(p => { p.addEventListener("click", e => e.stopPropagation()); p.querySelector(".x").addEventListener("click", closeAll); });
+  document.addEventListener("click", closeAll); document.addEventListener("keydown", e => { if (e.key === "Escape") closeAll(); });
+}
 
 /* ============================================================ URL state ============================================================ */
 function toHash() {
   const p = new URLSearchParams();
-  for (const k of ["out", "cl", "metric", "year", "from", "to", "region", "iso", "y2", "event", "est"]) if (state[k] !== DEF[k] && state[k] !== null) p.set(k, state[k]);
-  const h = p.toString(); history.replaceState(null, "", h ? "#" + h : location.pathname);
+  for (const k of ["out", "cl", "metric", "year", "from", "to", "iso", "y2", "event", "est"]) if (state[k] !== DEF[k] && state[k] !== null) p.set(k, state[k]);
+  if (state.sel !== null) p.set("sel", [...state.sel].join(","));
+  const h = p.toString(); history.replaceState(null, "", location.pathname + location.search + (h ? "#" + h : ""));
 }
 function fromHash() {
   const p = new URLSearchParams(location.hash.slice(1));
-  for (const k of ["out", "cl", "metric", "region", "iso", "y2", "event", "est"]) if (p.has(k)) state[k] = p.get(k);
+  for (const k of ["out", "cl", "metric", "iso", "y2", "event", "est"]) if (p.has(k)) state[k] = p.get(k);
   for (const k of ["year", "from", "to"]) if (p.has(k)) state[k] = +p.get(k);
+  if (p.has("sel")) state.sel = new Set(p.get("sel").split(",").filter(i => byIso(i)));
   if (!(state.out in S.meta.outcomes)) state.out = DEF.out;
   if (!(state.cl in S.meta.clusters)) state.cl = DEF.cl;
   if (!(state.metric in METRIC)) state.metric = DEF.metric;
@@ -408,16 +600,23 @@ function fromHash() {
   if (state.from >= state.to) { state.from = DEF.from; state.to = DEF.to; }
 }
 
-/* ============================================================ answer line ============================================================ */
+/* ============================================================ answer line + bar hints ============================================================ */
 function drawAnswer() {
-  const vis = visible(), i = yi(state.year);
-  const lvl = meanAt(vis, "out", i), pol = meanAt(vis, "cl", i);
+  const vis = visible(), i = yi(state.year), lvl = meanAt(vis, "out", i), pol = meanAt(vis, "cl", i);
   const worse = vis.filter(c => { const d = change(c.iso3); return d !== null && d > 0; }).length, have = vis.filter(c => change(c.iso3) !== null).length;
-  const c = state.iso ? byIso(state.iso) : null;
-  let s = `<b>${outLabel()}</b> in ${state.year}, ${vis.length} countries: <b>${fmt(lvl)}${outUnit() === "%" ? "%" : ""}</b> on average; <b>${worse} of ${have}</b> higher in ${state.to} than in ${state.from}. <b>${clLabel()}</b>: <b>${fmt(pol, 1)}</b> records per country on the books.`;
-  if (c) { const v = valAt(c.iso3, "out", state.year), p = valAt(c.iso3, "cl", state.year); s += ` <b>${c.country}</b>: ${fmt(v)}${outUnit() === "%" ? "%" : ""} and ${fmt(p, 0)} records.`; }
-  if (anyFallback()) s += ` <small style="color:var(--ink-faint)">The ${outLabel().toLowerCase()} series ends before ${state.year} for some countries; the latest value within three years is used.</small>`;
+  const c = state.iso ? byIso(state.iso) : null, pct = outUnit() === "%" ? "%" : "";
+  let s = `<span><b>${outLabel()}</b> in ${state.year}, ${vis.length === 49 ? "49 countries" : `<b>${vis.length}</b> ticked countries`}: <b>${fmt(lvl)}${pct}</b> on average; <b>${worse} of ${have}</b> higher in ${state.to} than in ${state.from}. <b>${clLabel()}</b>: <b>${fmt(pol, 1)}</b> records per country.</span>`;
+  if (c) s += `<span class="focus">${c.country}: ${fmt(valAt(c.iso3, "out", state.year))}${pct} · ${fmt(valAt(c.iso3, "cl", state.year), 0)} records <button type="button" id="focus-x" aria-label="Clear focus" title="Clear focus">×</button></span>`;
+  if (anyFallback()) s += `<span style="color:var(--ink-faint);font-size:12.5px">The ${outLabel().toLowerCase()} series ends before ${state.year} for some countries; the latest value within three years is used.</span>`;
   $("#answer").innerHTML = s;
+  $("#focus-x")?.addEventListener("click", () => { state.iso = null; render(); });
+  // which selectors the map is using right now
+  const uses = METRIC[state.metric].uses;
+  const hint = (id, key, msg) => { const g = $(id); g.classList.toggle("dim", !uses.includes(key)); $(id + " small").textContent = uses.includes(key) ? "" : "not on the map"; g.title = uses.includes(key) ? "" : msg; };
+  hint("#g-out", "out", "The map is not coloured by the outcome right now; the outcome still drives the trends, the scatter and the watchlist.");
+  hint("#g-cl", "cl", "The map is not coloured by the cluster right now; the cluster still drives the trends, the scatter and the watchlist.");
+  hint("#g-year", "year", "The map is not using the year right now; the year still sets the level and policy columns elsewhere.");
+  hint("#g-win", "win", "The map is not using the window right now; the window still sets the change columns, the scatter and the shaded band.");
 }
 
 /* ============================================================ KPIs ============================================================ */
@@ -427,64 +626,56 @@ function drawKpis() {
     ${k.ci ? `<div class="kc">95% interval ${sgn(k.ci[0], 2)} to ${sgn(k.ci[1], 2)} · p = ${k.p.toFixed(3)}</div>` : `<div class="kc">${k.key === "loco" ? "p = " + k.p.toFixed(2) : "equivalence p = " + k.p.toFixed(3)} · ${k.note}</div>`}<div class="kr">${k.reading}</div></div>`).join("");
 }
 
-/* ============================================================ map + ranking ============================================================ */
+/* ============================================================ map + ranked list ============================================================ */
 let geo = null;
 function prepGeo() {
-  const world = window.WORLD_110M, all = topojson.feature(world, world.objects.countries).features;
-  const ids = new Map(C().map(c => [c.m49, c]));
+  const world = window.WORLD_110M, all = topojson.feature(world, world.objects.countries).features, ids = new Map(C().map(c => [c.m49, c]));
   const ssa = all.filter(f => ids.has(String(f.id)));
   const africa = all.filter(f => { const c = d3.geoCentroid(f); return c[0] > -26 && c[0] < 60 && c[1] > -36 && c[1] < 38 && !ids.has(String(f.id)); });
   const points = C().filter(c => c.centroid).map(c => ({ type: "Feature", properties: { iso3: c.iso3 }, geometry: { type: "Point", coordinates: c.centroid } }));
-  const fc = { type: "FeatureCollection", features: ssa.concat(points) };
-  const proj = d3.geoMercator().fitExtent([[10, 10], [690, 610]], fc), path = d3.geoPath(proj);
-  geo = { ssa, africa, points, path, proj, isoOf: f => ids.get(String(f.id)).iso3 };
+  const proj = d3.geoMercator().fitExtent([[10, 10], [690, 610]], { type: "FeatureCollection", features: ssa.concat(points) });
+  geo = { ssa, africa, points, path: d3.geoPath(proj), proj, isoOf: f => ids.get(String(f.id)).iso3 };
 }
 function drawMap() {
   const svg = d3.select("#map"); svg.selectAll("*").remove();
-  const scale = colorScale(), vis = new Set(visible().map(c => c.iso3));
+  const scale = colorScale();
   svg.append("g").selectAll("path").data(geo.africa).join("path").attr("class", "land").attr("d", geo.path);
   const fillOf = iso => { const v = mval(byIso(iso)); return v === null ? css.absent : scale(v); };
-  const tipOf = iso => { const c = byIso(iso), v = mval(c); return `<b>${c.country}</b><br>${METRIC[state.metric].label()}: ${v === null ? "no data" : (METRIC[state.metric].div ? sgn(v, 1) : fmt(v, state.metric === "policies" ? 0 : 1))}<br><small>${outLabel()} ${state.year}: ${fmt(valAt(iso, "out", state.year))}${outUnit() === "%" ? "%" : ""} · ${clLabel().toLowerCase()}: ${fmt(valAt(iso, "cl", state.year), 0)}</small>`; };
-  const g = svg.append("g");
-  g.selectAll("path").data(geo.ssa).join("path")
-    .attr("class", d => "c" + (geo.isoOf(d) === state.iso ? " sel" : "") + (vis.has(geo.isoOf(d)) ? "" : " dim"))
-    .attr("d", geo.path).attr("fill", d => fillOf(geo.isoOf(d))).attr("tabindex", 0).attr("role", "button")
-    .attr("aria-label", d => byIso(geo.isoOf(d)).country)
+  const cls = iso => "c" + (iso === state.iso ? " sel" : "") + (ticked(iso) ? "" : " dim");
+  const tipOf = iso => { const c = byIso(iso), v = mval(c); return `<b>${c.country}</b>${ticked(iso) ? "" : " <small>(unticked)</small>"}<br>${METRIC[state.metric].label()}: ${v === null ? "no data" : mfmt(v)}<br><small>${outLabel()} ${state.year}: ${fmt(valAt(iso, "out", state.year))}${outUnit() === "%" ? "%" : ""} · ${clLabel().toLowerCase()}: ${fmt(valAt(iso, "cl", state.year), 0)}</small>`; };
+  svg.append("g").selectAll("path").data(geo.ssa).join("path").attr("class", d => cls(geo.isoOf(d))).attr("d", geo.path).attr("fill", d => fillOf(geo.isoOf(d)))
+    .attr("tabindex", 0).attr("role", "button").attr("aria-label", d => byIso(geo.isoOf(d)).country)
     .on("click", (e, d) => select(geo.isoOf(d))).on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(geo.isoOf(d)); } })
     .each(function (d) { hover(this, () => tipOf(geo.isoOf(d))); });
   const pts = svg.append("g");
-  geo.points.forEach(p => {
-    const [x, y] = geo.proj(p.geometry.coordinates), iso = p.properties.iso3;
-    const c = pts.append("circle").attr("class", "c" + (iso === state.iso ? " sel" : "") + (vis.has(iso) ? "" : " dim")).attr("cx", x).attr("cy", y).attr("r", 6).attr("fill", fillOf(iso))
-      .attr("tabindex", 0).attr("role", "button").attr("aria-label", byIso(iso).country).on("click", () => select(iso)).on("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(iso); } });
-    hover(c.node(), () => tipOf(iso));
-    pts.append("text").attr("class", "isl").attr("x", x + 9).attr("y", y + 4).text(byIso(iso).country.replace("Sao Tome and Principe", "São Tomé"));
-  });
-  // legend
-  const dom = scale.domain(), leg = $("#map-legend");
-  const stops = d3.range(0, 1.001, .1).map(t => scale(dom[0] + t * (dom[dom.length - 1] - dom[0])));
-  leg.innerHTML = `<span>${METRIC[state.metric].div ? sgn(dom[0], 1) : fmt(dom[0], state.metric === "policies" ? 0 : 1)}</span><span class="ramp" style="background:linear-gradient(90deg,${stops.join(",")})"></span><span>${METRIC[state.metric].div ? sgn(dom[dom.length - 1], 1) : fmt(dom[dom.length - 1], state.metric === "policies" ? 0 : 1)}</span><span>· ${METRIC[state.metric].unit()}${METRIC[state.metric].div ? " · green is better, plum is worse" : ""}</span>${state.metric === "gap" ? "<span>· 43 countries have a context ranking</span>" : ""}`;
+  geo.points.forEach(p => { const [x, y] = geo.proj(p.geometry.coordinates), iso = p.properties.iso3;
+    const c = pts.append("circle").attr("class", cls(iso)).attr("cx", x).attr("cy", y).attr("r", 6).attr("fill", fillOf(iso)).attr("tabindex", 0).attr("role", "button").attr("aria-label", byIso(iso).country)
+      .on("click", () => select(iso)).on("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(iso); } });
+    hover(c.node(), () => tipOf(iso)); pts.append("text").attr("class", "isl").attr("x", x + 9).attr("y", y + 4).text(byIso(iso).country.replace("Sao Tome and Principe", "São Tomé")); });
+  const dom = scale.domain(), stops = d3.range(0, 1.001, .1).map(t => scale(dom[0] + t * (dom[dom.length - 1] - dom[0])));
+  $("#map-legend").innerHTML = `<span>${mfmt(dom[0])}</span><span class="ramp" style="background:linear-gradient(90deg,${stops.join(",")})"></span><span>${mfmt(dom[dom.length - 1])}</span><span>· ${METRIC[state.metric].unit()}${METRIC[state.metric].div ? " · green is better, plum is worse" : ""}</span>${state.metric === "gap" ? "<span>· 43 countries have a context ranking</span>" : ""}${state.sel !== null ? "<span>· unticked countries are faded</span>" : ""}`;
   $("#map-title").textContent = METRIC[state.metric].label();
   $("#map-sub").textContent = state.metric === "level" || state.metric === "change" ? S.meta.outcomes[state.out].source + (anyFallback() ? " · latest value within three years where the series ends early" : "") : state.metric === "policies" ? "WHO GIFNA registry, records active in the year, clustered by the rules at the foot of the page" : state.metric === "gap" ? "Residual from the context model, R² 0.81, 45 countries" : "Equal weights over the four indicators; 500 random weightings for stability";
   $("#map-h").textContent = state.metric === "level" ? "Where it is worst" : state.metric === "change" ? "Where it is getting worse" : state.metric === "policies" ? "Where the most has been written" : state.metric === "gap" ? "Where the numbers defy the context" : "Where attention should go";
-  $("#map-p").textContent = state.metric === "policies" ? "A count of registry records is a count of what was written, not of what reached anyone." : state.metric === "gap" ? "Positive is worse than income, malaria, fertility, urbanisation, sanitation and geography would predict; negative is better." : "Click any country to follow it through every panel below. Islands too small to draw are dots.";
 }
 function drawRank() {
-  const q = ($("#rank-q").value || "").trim().toLowerCase();
-  const scale = colorScale();
-  const rows = visible().map(c => ({ c, v: mval(c) })).filter(r => r.v !== null && (!q || r.c.country.toLowerCase().includes(q)))
-    .sort((a, b) => b.v - a.v);
-  const max = d3.max(rows, r => Math.abs(r.v)) || 1;
-  const ol = $("#rank"); ol.replaceChildren();
-  rows.forEach((r, i) => {
-    const li = document.createElement("li"); li.className = r.c.iso3 === state.iso ? "sel" : "";
-    const w = Math.abs(r.v) / max * 100;
-    li.innerHTML = `<span class="n">${i + 1}</span><span>${r.c.country}</span><span class="v">${METRIC[state.metric].div ? sgn(r.v, 1) : fmt(r.v, state.metric === "policies" ? 0 : 1)}</span><span class="bw"><i class="bi" style="width:${w}%;background:${scale(r.v)}"></i></span>`;
-    li.addEventListener("click", () => select(r.c.iso3));
-    ol.appendChild(li);
-  });
+  const q = ($("#rank-q").value || "").trim().toLowerCase(), scale = colorScale();
+  const rows = C().map(c => ({ c, v: mval(c) })).filter(r => r.v !== null && (!q || r.c.country.toLowerCase().includes(q))).sort((a, b) => b.v - a.v);
+  const max = d3.max(rows, r => Math.abs(r.v)) || 1, ol = $("#rank"); ol.replaceChildren();
+  rows.forEach((r, i) => { const li = document.createElement("li"); li.className = (r.c.iso3 === state.iso ? "sel " : "") + (ticked(r.c.iso3) ? "" : "off");
+    li.innerHTML = `<input type="checkbox" ${ticked(r.c.iso3) ? "checked" : ""} aria-label="Include ${r.c.country}"><span class="n">${i + 1}</span><button class="name" type="button">${r.c.country}</button><span class="v">${mfmt(r.v)}</span><span class="bw"><i class="bi" style="width:${Math.abs(r.v) / max * 100}%;background:${scale(r.v)}"></i></span>`;
+    li.querySelector("input").addEventListener("change", e => { const set = state.sel === null ? new Set(C().map(c => c.iso3)) : new Set(state.sel); e.target.checked ? set.add(r.c.iso3) : set.delete(r.c.iso3); state.sel = set.size === 49 ? null : set; render(); });
+    li.querySelector(".name").addEventListener("click", () => select(r.c.iso3)); ol.appendChild(li); });
+  const worstFirst = state.metric !== "policies";
   $("#rank-title").textContent = `Ranked: ${METRIC[state.metric].label()}`;
-  $("#rank-sub").textContent = `${rows.length} countries with a value · ${state.metric === "policies" ? "most on the books first" : state.metric === "concern" ? "highest concern first" : "worst first"}`;
+  $("#rank-sub").textContent = `${rows.length} with a value · ${worstFirst ? (state.metric === "concern" ? "highest concern first" : "worst first") : "most on the books first"} · tick to include, click a name to focus`;
+  // presets
+  const P = [["all", "All 49"], ["WCA", "West & Central"], ["ESA", "Eastern & Southern"], ["worst", worstFirst ? "Worst 10" : "Most 10"], ["best", worstFirst ? "Best 10" : "Fewest 10"], ["none", "Clear"]];
+  const ranked = C().map(c => ({ c, v: mval(c) })).filter(r => r.v !== null).sort((a, b) => b.v - a.v);
+  const setOf = k => k === "all" ? null : k === "none" ? new Set() : k === "WCA" || k === "ESA" ? new Set(C().filter(c => c.subregion === k).map(c => c.iso3)) : new Set((k === "worst" ? ranked.slice(0, 10) : ranked.slice(-10)).map(r => r.c.iso3));
+  const same = (a, b) => (a === null && b === null) || (a !== null && b !== null && a.size === b.size && [...a].every(x => b.has(x)));
+  const pr = $("#presets"); pr.replaceChildren();
+  P.forEach(([k, lab]) => { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = lab; b.setAttribute("aria-pressed", String(same(state.sel, setOf(k)))); b.addEventListener("click", () => { state.sel = setOf(k); render(); }); pr.appendChild(b); });
 }
 
 /* ============================================================ trends ============================================================ */
@@ -496,7 +687,6 @@ function panel(svg, values, opts) {
   if (!present.length) { svg.appendChild(txt("no data for this selection", { x: W / 2, y: H / 2, "text-anchor": "middle", class: "axis" })); return { x, y: null }; }
   const lo = opts.zero ? 0 : d3.min(present, d => d[1]), hi = d3.max(present, d => d[1]), pad = (hi - lo) * .12 || 1;
   const y = d3.scaleLinear().domain([opts.zero ? 0 : lo - pad, hi + pad]).range([H - m.b, m.t]);
-  // window band
   svg.appendChild(el("rect", { x: x(state.from), y: m.t, width: x(state.to) - x(state.from), height: H - m.b - m.t, fill: css["surface-2"], opacity: .6 }));
   for (const t of y.ticks(opts.ticks || 3)) { svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), class: "gridline" })); svg.appendChild(txt(opts.pct ? t + "%" : t, { x: m.l - 7, y: y(t) + 4, "text-anchor": "end", class: "axis" })); }
   if (opts.axis) for (const t of [2000, 2005, 2010, 2015, 2020, 2023]) svg.appendChild(txt(t, { x: x(t), y: H - 6, "text-anchor": "middle", class: "axis" }));
@@ -510,7 +700,6 @@ function panel(svg, values, opts) {
   const last = present[present.length - 1];
   svg.appendChild(el("circle", { cx: x(last[0]), cy: y(last[1]), r: 4, fill: opts.color, stroke: css.surface, "stroke-width": 2 }));
   svg.appendChild(txt((opts.pct ? fmt(last[1]) + "%" : fmt(last[1], opts.dec ?? 1)), { x: x(last[0]) - 6, y: y(last[1]) - 9, "text-anchor": "end", class: "lab", fill: opts.color }));
-  // crosshair group, driven from the card
   const cg = el("g", { class: "cross", opacity: 0 });
   cg.appendChild(el("line", { x1: 0, x2: 0, y1: m.t, y2: H - m.b, stroke: css.ink, "stroke-width": 1, opacity: .5 }));
   cg.appendChild(el("circle", { r: 4, fill: css.surface, stroke: opts.color, "stroke-width": 2 }));
@@ -519,18 +708,16 @@ function panel(svg, values, opts) {
 }
 let trendPanels = {};
 function drawTrends() {
-  const c = state.iso ? byIso(state.iso) : null;
+  const c = state.iso ? byIso(state.iso) : null, vis = visible();
   const stock = c ? ser(c.iso3, "cl") : regional("cl"), out = c ? ser(c.iso3, "out") : regional("out");
   const marks = c ? [c.first_policy_year ? { year: c.first_policy_year, label: "first anaemia policy" } : null, c.mandate_year ? { year: c.mandate_year, label: "flour mandate" } : null].filter(Boolean) : [];
-  const who = c ? c.country : `average of ${visible().length} countries`;
-  $("#tr-title").textContent = `${clLabel()} · ${outLabel()} · ${who}`;
+  $("#tr-title").textContent = `${clLabel()} · ${outLabel()} · ${c ? c.country : `average of ${vis.length} ${vis.length === 49 ? "" : "ticked "}countries`}`;
   $("#tr-sub").textContent = `${S.meta.outcomes[state.out].source} · GIFNA records active in the year`;
   $("#lg-cl").textContent = clLabel(); $("#lg-out").textContent = `${outLabel()}${outUnit() === "%" ? ", %" : ", " + outUnit()}`;
   trendPanels.stock = panel($("#c-stock"), stock, { color: css.gold, zero: true, dec: c ? 0 : 2, marks });
   trendPanels.out = panel($("#c-out"), out, { color: css.plum, axis: true, pct: outUnit() === "%", ticks: 4, marks });
   const f = yi(state.from), t = yi(state.to), pct = outUnit() === "%" ? "%" : "";
-  if (c) {
-    const d = c.resid_context, o = out[t], o0 = out[f];
+  if (c) { const d = c.resid_context, o = out[t], o0 = out[f];
     $("#tr-read").innerHTML = `<b>${c.country}</b> had <b>${fmt(stock[t], 0)}</b> ${clLabel().toLowerCase()} records on the books in ${state.to}${c.first_policy_year ? `; its first dated anaemia policy is from ${c.first_policy_year}` : ""}. ${outLabel()} stood at <b>${fmt(o)}${pct}</b>, ${o !== null && o0 !== null ? `${o - o0 > 0 ? "up" : "down"} <b>${Math.abs(o - o0).toFixed(1)}</b> since ${state.from}` : "no change can be computed for this window"}${state.out === "out_anaemia_wra_fs_pct" ? (d === null ? ". It has no context ranking: the panel lacks one of the controls." : ` — <b>${Math.abs(d).toFixed(1)} points ${d < 0 ? "below" : "above"}</b> what its income, health burden and geography predict.`) : "."}`;
     const b = [];
     if (c.concern_rank) b.push(`<span class="badge">Concern rank ${c.concern_rank} of 49</span>`);
@@ -539,19 +726,16 @@ function drawTrends() {
     b.push(`<span class="badge">Flour fortification mandate: ${c.mandate_status === "YES" ? (c.mandate_year || "yes") : (c.mandate_status || "unknown").toLowerCase()}</span>`);
     b.push(`<span class="badge">${c.policy_helps ? "Policy improves" : "Policy does not improve"} the forecast</span>`);
     $("#badges").innerHTML = b.join("");
-  } else {
-    const vis = visible(), worse = vis.filter(x => { const d = change(x.iso3); return d !== null && d > 0; }).length;
-    $("#tr-read").innerHTML = `Averaged over ${vis.length} countries, <b>${clLabel().toLowerCase()}</b> records rose from <b>${fmt(stock[0], 2)}</b> per country in 2000 to <b>${fmt(stock[f], 2)}</b> in ${state.from} and <b>${fmt(stock[t], 2)}</b> in ${state.to}. <b>${outLabel()}</b> went from <b>${fmt(out[0])}${pct}</b> to <b>${fmt(out[f])}${pct}</b> to <b>${fmt(out[t])}${pct}</b>. <b>${worse} of ${vis.length}</b> countries are higher in ${state.to} than in ${state.from}.`;
-    $("#badges").innerHTML = "";
-  }
+  } else { const worse = vis.filter(x => { const d = change(x.iso3); return d !== null && d > 0; }).length;
+    $("#tr-read").innerHTML = vis.length ? `Averaged over ${vis.length} countries, <b>${clLabel().toLowerCase()}</b> records rose from <b>${fmt(stock[0], 2)}</b> per country in 2000 to <b>${fmt(stock[f], 2)}</b> in ${state.from} and <b>${fmt(stock[t], 2)}</b> in ${state.to}. <b>${outLabel()}</b> went from <b>${fmt(out[0])}${pct}</b> to <b>${fmt(out[f])}${pct}</b> to <b>${fmt(out[t])}${pct}</b>. <b>${worse} of ${vis.length}</b> countries are higher in ${state.to} than in ${state.from}.` : "No countries are ticked. Use the presets or the checkboxes in the ranked list.";
+    $("#badges").innerHTML = ""; }
   $("#yt-cl").innerHTML = `<span>${clLabel()}</span>`; $("#yt-out").innerHTML = `<span>${outLabel()}</span>`;
   const tb = $("#yeartable tbody"); tb.replaceChildren();
   S.meta.years.forEach((yr, i) => { const tr = document.createElement("tr"); tr.style.cursor = "default"; tr.innerHTML = `<td>${yr}</td><td class="num">${fmt(stock[i], c ? 0 : 2)}</td><td class="num">${fmt(out[i])}</td>`; tb.appendChild(tr); });
 }
 function trendCross(e) {
   const p = trendPanels.out; if (!p || !p.y) return;
-  const r = $("#c-out").getBoundingClientRect(), xpx = (e.clientX - r.left) / r.width * p.W;
-  const yr = Math.round(p.x.invert(xpx)); if (yr < 2000 || yr > 2023) return trendHide();
+  const r = $("#c-out").getBoundingClientRect(), xpx = (e.clientX - r.left) / r.width * p.W, yr = Math.round(p.x.invert(xpx)); if (yr < 2000 || yr > 2023) return trendHide();
   const i = yi(yr);
   for (const k of ["stock", "out"]) { const q = trendPanels[k]; if (!q || !q.y) continue; const v = q.values[i];
     q.cross.setAttribute("opacity", 1); q.cross.setAttribute("transform", `translate(${q.x(yr)},0)`);
@@ -560,44 +744,41 @@ function trendCross(e) {
 }
 function trendHide() { for (const k of ["stock", "out"]) trendPanels[k]?.cross?.setAttribute("opacity", 0); }
 
-/* ============================================================ scatter ============================================================ */
+/* ============================================================ scatter + tails ============================================================ */
 function drawScatter() {
   const svg = $("#c-scatter"), W = 760, H = 440, m = { t: 18, r: 20, b: 46, l: 54 }; svg.replaceChildren();
   const yOf = c => state.y2 === "change" ? change(c.iso3) : state.y2 === "resid" ? c.resid_context : c.resid_income;
   const pts = visible().map(c => ({ c, x: winMean(c.iso3, "cl"), y: yOf(c) })).filter(p => p.x !== null && p.y !== null);
   const ylab = state.y2 === "change" ? `Change in ${outLabel().toLowerCase()}, ${state.from}→${state.to}` : state.y2 === "resid" ? "Anaemia against what context predicts (points)" : "Anaemia against what income alone predicts (points)";
   $("#sc-title").textContent = `${clLabel()} against: ${ylab.toLowerCase()}`;
-  if (!pts.length) { svg.appendChild(txt("nothing to plot for this selection", { x: W / 2, y: H / 2, "text-anchor": "middle", class: "axis" })); $("#sc-read").textContent = ""; return; }
-  const x = d3.scaleLinear().domain([0, (d3.max(pts, p => p.x) || 1) * 1.08]).range([m.l, W - m.r]);
-  const yh = (d3.max(pts, p => Math.abs(p.y)) || 1) * 1.1, y = d3.scaleLinear().domain([-yh, yh]).range([H - m.b, m.t]);
-  for (const t of y.ticks(5)) { svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), class: "gridline" })); svg.appendChild(txt(sgn(t, 0), { x: m.l - 8, y: y(t) + 4, "text-anchor": "end", class: "axis" })); }
-  svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: css["line-2"], "stroke-width": 1.5 }));
-  for (const t of x.ticks(6)) svg.appendChild(txt(t, { x: x(t), y: H - m.b + 18, "text-anchor": "middle", class: "axis" }));
-  svg.appendChild(txt(`${clLabel()} on the books, average ${state.from}–${state.to}`, { x: (m.l + W - m.r) / 2, y: H - 12, "text-anchor": "middle", class: "axis" }));
-  svg.appendChild(txt("worse ↑", { x: m.l - 8, y: m.t + 12, "text-anchor": "end", class: "lab", fill: css.plum }));
-  svg.appendChild(txt("better ↓", { x: m.l - 8, y: H - m.b - 6, "text-anchor": "end", class: "lab", fill: css["green-deep"] }));
-  for (const p of pts) {
-    const pos = p.c.group?.startsWith("positive"), neg = p.c.group?.startsWith("under"), sel = p.c.iso3 === state.iso;
-    const fill = pos ? css["green-deep"] : neg ? css.plum : "none";
-    const g = el("g", { class: "dot", tabindex: 0, role: "button", "aria-label": p.c.country, style: "cursor:pointer" });
-    const cx = x(p.x), cy = y(p.y);
-    g.appendChild(neg ? el("path", { d: `M${cx},${cy - 6} L${cx + 5.5},${cy + 4} L${cx - 5.5},${cy + 4} Z`, fill, stroke: sel ? css.ink : css.surface, "stroke-width": sel ? 2.5 : 1.5 })
-      : el("circle", { cx, cy, r: pos ? 6 : 4.5, fill, stroke: sel ? css.ink : (pos ? css.surface : css["ink-faint"]), "stroke-width": sel ? 2.5 : 1.5 }));
-    hover(g, () => `<b>${p.c.country}</b><br>${fmt(p.x, 1)} records on the books<br>${sgn(p.y, 1)} ${state.y2 === "change" ? "over the window" : "against the prediction"}<br><small>${outLabel()} ${state.to}: ${fmt(ser(p.c.iso3, "out")[yi(state.to)])}</small>`);
-    g.addEventListener("click", () => select(p.c.iso3)); g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(p.c.iso3); } });
-    svg.appendChild(g);
+  if (!pts.length) { svg.appendChild(txt("nothing to plot for this selection", { x: W / 2, y: H / 2, "text-anchor": "middle", class: "axis" })); $("#sc-read").textContent = ""; }
+  else {
+    const x = d3.scaleLinear().domain([0, (d3.max(pts, p => p.x) || 1) * 1.08]).range([m.l, W - m.r]);
+    const yh = (d3.max(pts, p => Math.abs(p.y)) || 1) * 1.1, y = d3.scaleLinear().domain([-yh, yh]).range([H - m.b, m.t]);
+    for (const t of y.ticks(5)) { svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), class: "gridline" })); svg.appendChild(txt(sgn(t, 0), { x: m.l - 8, y: y(t) + 4, "text-anchor": "end", class: "axis" })); }
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: css["line-2"], "stroke-width": 1.5 }));
+    for (const t of x.ticks(6)) svg.appendChild(txt(t, { x: x(t), y: H - m.b + 18, "text-anchor": "middle", class: "axis" }));
+    svg.appendChild(txt(`${clLabel()} on the books, average ${state.from}–${state.to}`, { x: (m.l + W - m.r) / 2, y: H - 12, "text-anchor": "middle", class: "axis" }));
+    svg.appendChild(txt("worse ↑", { x: m.l - 8, y: m.t + 12, "text-anchor": "end", class: "lab", fill: css.plum }));
+    svg.appendChild(txt("better ↓", { x: m.l - 8, y: H - m.b - 6, "text-anchor": "end", class: "lab", fill: css["green-deep"] }));
+    for (const p of pts) { const pos = p.c.group?.startsWith("positive"), neg = p.c.group?.startsWith("under"), sel = p.c.iso3 === state.iso, fill = pos ? css["green-deep"] : neg ? css.plum : "none";
+      const g = el("g", { tabindex: 0, role: "button", "aria-label": p.c.country, style: "cursor:pointer" }), cx = x(p.x), cy = y(p.y);
+      g.appendChild(neg ? el("path", { d: `M${cx},${cy - 6} L${cx + 5.5},${cy + 4} L${cx - 5.5},${cy + 4} Z`, fill, stroke: sel ? css.ink : css.surface, "stroke-width": sel ? 2.5 : 1.5 })
+        : el("circle", { cx, cy, r: pos ? 6 : 4.5, fill, stroke: sel ? css.ink : (pos ? css.surface : css["ink-faint"]), "stroke-width": sel ? 2.5 : 1.5 }));
+      hover(g, () => `<b>${p.c.country}</b><br>${fmt(p.x, 1)} records on the books<br>${sgn(p.y, 1)} ${state.y2 === "change" ? "over the window" : "against the prediction"}<br><small>${outLabel()} ${state.to}: ${fmt(valAt(p.c.iso3, "out", state.to))}</small>`);
+      g.addEventListener("click", () => select(p.c.iso3)); g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(p.c.iso3); } }); svg.appendChild(g); }
+    const ext = [...pts].sort((a, b) => a.y - b.y).slice(0, 3).concat([...pts].sort((a, b) => b.y - a.y).slice(0, 3));
+    for (const p of ext) svg.appendChild(txt(p.c.country.replace("Democratic Republic of the Congo", "DR Congo").replace("United Republic of Tanzania", "Tanzania"), { x: x(p.x) + 9, y: y(p.y) + 4, class: "lab", fill: p.y < 0 ? css["green-deep"] : css.plum }));
+    const mx = d3.mean(pts, q => q.x), my = d3.mean(pts, q => q.y);
+    const r = pts.length > 2 ? d3.sum(pts, p => (p.x - mx) * (p.y - my)) / Math.sqrt(d3.sum(pts, p => (p.x - mx) ** 2) * d3.sum(pts, p => (p.y - my) ** 2)) : null;
+    $("#sc-read").innerHTML = `${pts.length} countries plotted. Correlation between the stock and the vertical axis: <b>${r === null || Number.isNaN(r) ? "—" : r.toFixed(2)}</b>. ${Math.abs(r || 0) < .2 ? "A cloud with no tilt." : Math.abs(r) < .4 ? "A faint tilt, and a descriptive one." : "A visible tilt — descriptive only; the shaded panels are where the guards are."}`;
   }
-  const ext = [...pts].sort((a, b) => a.y - b.y).slice(0, 3).concat([...pts].sort((a, b) => b.y - a.y).slice(0, 3));
-  for (const p of ext) svg.appendChild(txt(p.c.country.replace("Democratic Republic of the Congo", "DR Congo").replace("United Republic of Tanzania", "Tanzania"), { x: x(p.x) + 9, y: y(p.y) + 4, class: "lab", fill: p.y < 0 ? css["green-deep"] : css.plum }));
-  const r = pts.length > 2 ? d3.sum(pts, p => (p.x - d3.mean(pts, q => q.x)) * (p.y - d3.mean(pts, q => q.y))) / Math.sqrt(d3.sum(pts, p => (p.x - d3.mean(pts, q => q.x)) ** 2) * d3.sum(pts, p => (p.y - d3.mean(pts, q => q.y)) ** 2)) : null;
-  $("#sc-read").innerHTML = `${pts.length} countries plotted. Correlation between the stock and the vertical axis: <b>${r === null ? "—" : r.toFixed(2)}</b>. ${Math.abs(r || 0) < .2 ? "A cloud with no tilt." : Math.abs(r) < .4 ? "A faint tilt, and a descriptive one." : "A visible tilt — descriptive only; the model panels are where the guards are."}`;
   const tails = (test, node) => { node.replaceChildren(); C().filter(c => c.group && test(c.group)).sort((a, b) => a.resid_context - b.resid_context).forEach(c => {
-    const li = document.createElement("li"); li.className = c.iso3 === state.iso ? "sel" : ""; li.style.gridTemplateColumns = "1fr auto";
-    li.innerHTML = `<span>${c.country}</span><span class="v">${sgn(c.resid_context, 1)} pp · ${fmt(ser(c.iso3, "cl")[yi(2023)], 0)} ${state.cl === "anaemia" ? "policies" : "records"}</span>`;
-    li.addEventListener("click", () => select(c.iso3)); node.appendChild(li); }); };
+    const li = document.createElement("li"); li.className = c.iso3 === state.iso ? "sel" : "";
+    li.innerHTML = `<span>${c.country}</span><span class="v">${sgn(c.resid_context, 1)} pp · ${fmt(c.stock_2023, 0)} anaemia policies</span>`; li.addEventListener("click", () => select(c.iso3)); node.appendChild(li); }); };
   tails(g => g.startsWith("positive"), $("#tail-pos")); tails(g => g.startsWith("under"), $("#tail-neg"));
   const ct = S.model.contrast.find(d => d.ranking === "context" && d.composite === "feat_gd_stock_anaemia_policies");
-  $("#tail-note").textContent = `Eight a side, ranked on anaemia against the context model. Their anaemia-policy records average ${fmt(ct.positive, 1)} against ${fmt(ct.under, 1)}: not distinguishable (Mann-Whitney p = ${ct.p.toFixed(2)}). Six countries have no context ranking because the panel lacks a control for them.`;
+  $("#tail-note").textContent = `Eight a side. Their anaemia-policy records average ${fmt(ct.positive, 1)} against ${fmt(ct.under, 1)}: not distinguishable (Mann-Whitney p = ${ct.p.toFixed(2)}). Six countries have no context ranking because the panel lacks a control for them.`;
 }
 
 /* ============================================================ ladder ============================================================ */
@@ -607,9 +788,8 @@ function drawLadder() {
     b.innerHTML = `${lab} <small>${S.model.ladder.filter(r => r.block === k).length}</small>`; b.addEventListener("click", () => { if (k === "main") return; state.blocks.has(k) ? state.blocks.delete(k) : state.blocks.add(k); drawLadder(); }); chips.appendChild(b); }
   const rows = S.model.ladder.filter(r => state.blocks.has(r.block)), svg = $("#c-ladder"), W = 900, rh = 22, hh = 20, m = { t: 26, r: 24, b: 30, l: 400 };
   const items = []; let lb = null; rows.forEach(r => { if (r.block !== lb) { items.push({ head: r.block }); lb = r.block; } items.push({ r }); });
-  const H = m.t + items.reduce((a, it) => a + (it.head ? hh : rh), 0) + m.b;
-  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.replaceChildren();
-  const lo = d3.min(rows, r => r.lo), hi = d3.max(rows, r => r.hi), x = d3.scaleLinear().domain([Math.min(lo, -0.2), Math.max(hi, 0.2)]).nice().range([m.l, W - m.r]);
+  const H = m.t + items.reduce((a, it) => a + (it.head ? hh : rh), 0) + m.b; svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.replaceChildren();
+  const x = d3.scaleLinear().domain([Math.min(d3.min(rows, r => r.lo), -0.2), Math.max(d3.max(rows, r => r.hi), 0.2)]).nice().range([m.l, W - m.r]);
   for (const t of x.ticks(7)) { svg.appendChild(el("line", { x1: x(t), x2: x(t), y1: m.t - 8, y2: H - m.b + 4, class: "gridline" })); svg.appendChild(txt(sgn(t, 1), { x: x(t), y: H - m.b + 18, "text-anchor": "middle", class: "axis" })); }
   svg.appendChild(el("line", { x1: x(0), x2: x(0), y1: m.t - 8, y2: H - m.b + 4, stroke: css["line-2"], "stroke-width": 1.5 }));
   svg.appendChild(txt("points of anaemia per policy, 95% interval", { x: W - m.r, y: m.t - 12, "text-anchor": "end", class: "axis" }));
@@ -620,28 +800,26 @@ function drawLadder() {
     const g = el("g", { style: "cursor:default" });
     g.appendChild(txt(r.label, { x: m.l - 12, y: y + 4, "text-anchor": "end", class: "lab", fill: main ? css.ink : css["ink-soft"], "font-weight": main ? 700 : 500 }));
     g.appendChild(el("line", { x1: x(r.lo), x2: x(r.hi), y1: y, y2: y, stroke: main ? css.plum : css["ink-soft"], "stroke-width": main ? 3 : 2, "stroke-linecap": "round" }));
-    g.appendChild(el("circle", { cx: x(r.coef), cy: y, r: main ? 5 : 4, fill: main ? css.plum : css.surface, stroke: main ? css.plum : css["ink-soft"], "stroke-width": 2 }));
+    g.appendChild(el("circle", { cx: x(r.coef), cy: y, r: main ? 5 : 4, fill: main ? css.plum : css["surface-3"], stroke: main ? css.plum : css["ink-soft"], "stroke-width": 2 }));
     g.appendChild(el("rect", { x: 0, y: y - rh / 2, width: W, height: rh, fill: "transparent" }));
     hover(g, () => `<b>${r.label}</b><br>${sgn(r.coef, 3)} [${sgn(r.lo, 2)}, ${sgn(r.hi, 2)}] · p = ${fmt(r.p, 3)}${r.p_bh !== null ? ` · BH ${fmt(r.p_bh, 3)}` : ""}${r.p_wcb !== null ? ` · wild bootstrap ${fmt(r.p_wcb, 3)}` : ""}<br><small>${r.n} country-years, ${r.countries} countries${r.years ? ", " + r.years : ""}</small>${r.note ? `<br><small>${r.note}</small>` : ""}`);
     svg.appendChild(g);
   });
-  // other outcomes
   const so = $("#c-outcomes"), rows2 = S.model.other_outcomes, W2 = 560, rh2 = 26, m2 = { t: 22, r: 20, b: 28, l: 230 }, H2 = m2.t + rows2.length * rh2 + m2.b;
   so.setAttribute("viewBox", `0 0 ${W2} ${H2}`); so.replaceChildren();
   const x2 = d3.scaleLinear().domain([Math.min(d3.min(rows2, r => r.lo), -0.1), Math.max(d3.max(rows2, r => r.hi), 0.1)]).nice().range([m2.l, W2 - m2.r]);
   for (const t of x2.ticks(5)) { so.appendChild(el("line", { x1: x2(t), x2: x2(t), y1: m2.t - 6, y2: H2 - m2.b + 4, class: "gridline" })); so.appendChild(txt(sgn(t, 1), { x: x2(t), y: H2 - m2.b + 18, "text-anchor": "middle", class: "axis" })); }
   so.appendChild(el("line", { x1: x2(0), x2: x2(0), y1: m2.t - 6, y2: H2 - m2.b + 4, stroke: css["line-2"], "stroke-width": 1.5 }));
   so.appendChild(txt("units of the outcome per policy", { x: W2 - m2.r, y: m2.t - 8, "text-anchor": "end", class: "axis" }));
-  rows2.forEach((r, i) => { const y = m2.t + i * rh2 + rh2 / 2, cur = r.outcome === state.out; const g = el("g");
+  rows2.forEach((r, i) => { const y = m2.t + i * rh2 + rh2 / 2, cur = r.outcome === state.out, g = el("g");
     if (cur) g.appendChild(el("rect", { x: 0, y: y - rh2 / 2, width: W2, height: rh2, fill: css["tint-plum"], rx: 4 }));
     g.appendChild(txt(r.label, { x: m2.l - 12, y: y + 4, "text-anchor": "end", class: "lab", fill: cur ? css.plum : css["ink-soft"], "font-weight": cur ? 700 : 500 }));
     g.appendChild(el("line", { x1: x2(r.lo), x2: x2(r.hi), y1: y, y2: y, stroke: cur ? css.plum : css["ink-soft"], "stroke-width": 2, "stroke-linecap": "round" }));
-    g.appendChild(el("circle", { cx: x2(r.coef), cy: y, r: 4, fill: cur ? css.plum : css.surface, stroke: cur ? css.plum : css["ink-soft"], "stroke-width": 2 }));
+    g.appendChild(el("circle", { cx: x2(r.coef), cy: y, r: 4, fill: cur ? css.plum : css["surface-3"], stroke: cur ? css.plum : css["ink-soft"], "stroke-width": 2 }));
     hover(g, () => `<b>${r.label}</b><br>${sgn(r.coef, 3)} [${sgn(r.lo, 2)}, ${sgn(r.hi, 2)}] · p = ${fmt(r.p, 3)}<br><small>${r.n} country-years, ${r.countries} countries · ${r.unit}</small>`); so.appendChild(g); });
-  // alt doses table
   const tb = $("#alt tbody"); tb.replaceChildren();
-  S.model.alt.forEach(r => { const tr = document.createElement("tr"); tr.style.cursor = "default"; if (state.cl === "fortification" && r.key.includes("fortification")) tr.className = "hl";
-    tr.innerHTML = `<td style="white-space:normal">${r.label}</td><td class="num">${sgn(r.coef, 2)}</td><td class="num">${sgn(r.lo, 2)} to ${sgn(r.hi, 2)}</td><td class="num">${fmt(r.p, 3)}</td><td style="color:var(--ink-faint)">${r.unit}</td>`; tb.appendChild(tr); });
+  S.model.alt.forEach(r => { const tr = document.createElement("tr"); if (state.cl === "fortification" && r.key.includes("fortification")) tr.className = "hl";
+    tr.innerHTML = `<td style="white-space:normal">${r.label}</td><td class="num">${sgn(r.coef, 2)}</td><td class="num">${sgn(r.lo, 2)} to ${sgn(r.hi, 2)}</td><td class="num">${fmt(r.p, 3)}</td><td style="color:var(--ink-faint);white-space:normal">${r.unit}</td>`; tb.appendChild(tr); });
 }
 
 /* ============================================================ events ============================================================ */
@@ -651,7 +829,7 @@ function drawEvents() {
   for (const [k, lab] of Object.entries(S.model.estimator_labels)) { const b = document.createElement("button"); b.type = "button"; b.dataset.v = k; b.textContent = lab; b.setAttribute("aria-pressed", String(state.est === k)); b.addEventListener("click", () => { state.est = k; toHash(); drawEvents(); }); fs.appendChild(b); }
   const rows = S.model.events[state.event][state.est], svg = $("#c-event"), W = 900, H = 260, m = { t: 20, r: 20, b: 40, l: 54 }; svg.replaceChildren();
   const ks = [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5], x = d3.scalePoint().domain(ks).range([m.l, W - m.r]);
-  const lo = Math.min(d3.min(rows, r => r.lo), 0), hi = Math.max(d3.max(rows, r => r.hi), 0), y = d3.scaleLinear().domain([lo, hi]).nice().range([H - m.b, m.t]);
+  const y = d3.scaleLinear().domain([Math.min(d3.min(rows, r => r.lo), 0), Math.max(d3.max(rows, r => r.hi), 0)]).nice().range([H - m.b, m.t]);
   for (const t of y.ticks(5)) { svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), class: "gridline" })); svg.appendChild(txt(sgn(t, 1), { x: m.l - 8, y: y(t) + 4, "text-anchor": "end", class: "axis" })); }
   svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: css["line-2"], "stroke-width": 1.5 }));
   svg.appendChild(el("line", { x1: (x(-1) + x(0)) / 2, x2: (x(-1) + x(0)) / 2, y1: m.t, y2: H - m.b, stroke: css.gold, "stroke-dasharray": "4 3" }));
@@ -659,9 +837,9 @@ function drawEvents() {
   for (const k of ks) svg.appendChild(txt(k === -1 ? "−1 (ref.)" : (k > 0 ? "+" : "") + k, { x: x(k), y: H - m.b + 18, "text-anchor": "middle", class: "axis" }));
   svg.appendChild(txt("years relative to the event", { x: (m.l + W - m.r) / 2, y: H - 8, "text-anchor": "middle", class: "axis" }));
   svg.appendChild(txt("points of anaemia", { x: m.l - 8, y: m.t - 6, "text-anchor": "start", class: "axis" }));
-  svg.appendChild(el("circle", { cx: x(-1), cy: y(0), r: 4, fill: css.surface, stroke: css["ink-faint"], "stroke-width": 2 }));
+  svg.appendChild(el("circle", { cx: x(-1), cy: y(0), r: 4, fill: css["surface-3"], stroke: css["ink-faint"], "stroke-width": 2 }));
   rows.forEach(r => { const g = el("g"); g.appendChild(el("line", { x1: x(r.k), x2: x(r.k), y1: y(r.lo), y2: y(r.hi), stroke: css.plum, "stroke-width": 2, "stroke-linecap": "round" }));
-    g.appendChild(el("circle", { cx: x(r.k), cy: y(r.coef), r: 5, fill: css.plum, stroke: css.surface, "stroke-width": 2 }));
+    g.appendChild(el("circle", { cx: x(r.k), cy: y(r.coef), r: 5, fill: css.plum, stroke: css["surface-3"], "stroke-width": 2 }));
     hover(g, () => `<b>${r.k > 0 ? "+" : ""}${r.k} years</b><br>${sgn(r.coef, 2)} [${sgn(r.lo, 2)}, ${sgn(r.hi, 2)}]${r.p !== null ? ` · p = ${fmt(r.p, 3)}` : ""}`); svg.appendChild(g); });
   const a = S.model.att[state.event][state.est];
   $("#ev-read").innerHTML = `Average effect after the event, ${S.model.estimator_labels[state.est].toLowerCase()}: <b>${sgn(a.att, 2)}</b> points [${sgn(a.lo, 2)}, ${sgn(a.hi, 2)}]${a.p !== null ? `, p = ${fmt(a.p, 3)}` : ""} on ${a.n} country-years. ${state.est === "twfe" ? "Two-way fixed effects lean negative here but the pre-event years are not flat, which is the warning sign that the comparison group is contaminated." : state.est === "did2s" ? "The two-stage estimator, built for staggered adoption, finds nothing; its intervals are wide." : "Local projections, also built for staggered adoption, put the effect at about zero."}`;
@@ -672,46 +850,44 @@ function drawLoco() {
   const svg = $("#c-loco"), W = 560, rh = 28, m = { t: 14, r: 50, b: 28, l: 190 }, rows = S.model.loco_rmse, H = m.t + rows.length * rh + m.b; svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.replaceChildren();
   const x = d3.scaleLinear().domain([0, d3.max(rows, r => r.rmse) * 1.05]).range([m.l, W - m.r]);
   for (const t of x.ticks(5)) { svg.appendChild(el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b + 4, class: "gridline" })); svg.appendChild(txt(t, { x: x(t), y: H - m.b + 18, "text-anchor": "middle", class: "axis" })); }
-  rows.forEach((r, i) => { const y = m.t + i * rh, cur = r.model === "M2_income_policy", base = r.model === "M1_income"; const g = el("g");
+  rows.forEach((r, i) => { const y = m.t + i * rh, cur = r.model === "M2_income_policy", base = r.model === "M1_income", g = el("g");
     g.appendChild(txt(S.model.loco_labels[r.model], { x: m.l - 10, y: y + rh / 2 + 4, "text-anchor": "end", class: "lab", fill: cur ? css.plum : css["ink-soft"], "font-weight": cur || base ? 700 : 500 }));
     g.appendChild(el("rect", { x: m.l, y: y + 6, width: x(r.rmse) - m.l, height: rh - 12, rx: 3, fill: cur ? css.plum : base ? css.gold : css["ink-faint"], opacity: cur || base ? 1 : .55 }));
     g.appendChild(txt(fmt(r.rmse, 2), { x: x(r.rmse) + 6, y: y + rh / 2 + 4, class: "lab", fill: css["ink-soft"] }));
     hover(g, () => `<b>${S.model.loco_labels[r.model]}</b><br>RMSE ${fmt(r.rmse, 3)} · MAE ${fmt(r.mae, 3)} · R² of deviations ${fmt(r.r2, 2)}`); svg.appendChild(g); });
   const s2 = $("#c-loco2"), W2 = 560, H2 = 210, m2 = { t: 20, r: 20, b: 36, l: 20 }; s2.replaceChildren();
-  const pts = C().map(c => ({ c, d: c.loco_m2 - c.loco_m1 })), lim = d3.max(pts, p => Math.abs(p.d)) * 1.1, x2 = d3.scaleLinear().domain([-lim, lim]).range([m2.l, W2 - m2.r]);
-  const helped = pts.filter(p => p.d < 0).length;
+  const pts = C().map(c => ({ c, d: c.loco_m2 - c.loco_m1 })), lim = d3.max(pts, p => Math.abs(p.d)) * 1.1, x2 = d3.scaleLinear().domain([-lim, lim]).range([m2.l, W2 - m2.r]), helped = pts.filter(p => p.d < 0).length;
   for (const t of x2.ticks(6)) { s2.appendChild(el("line", { x1: x2(t), x2: x2(t), y1: m2.t, y2: H2 - m2.b, class: "gridline" })); s2.appendChild(txt(sgn(t, 2), { x: x2(t), y: H2 - m2.b + 16, "text-anchor": "middle", class: "axis" })); }
   s2.appendChild(el("line", { x1: x2(0), x2: x2(0), y1: m2.t, y2: H2 - m2.b, stroke: css["line-2"], "stroke-width": 1.5 }));
   s2.appendChild(txt("← policy helped", { x: x2(0) - 8, y: m2.t + 4, "text-anchor": "end", class: "lab", fill: css["green-deep"] })); s2.appendChild(txt("policy hurt →", { x: x2(0) + 8, y: m2.t + 4, class: "lab", fill: css.plum }));
   s2.appendChild(txt("change in a country's forecast error when policy is added (points)", { x: (m2.l + W2 - m2.r) / 2, y: H2 - 6, "text-anchor": "middle", class: "axis" }));
-  // beeswarm-ish stacking
-  const bins = new Map();
-  [...pts].sort((a, b) => a.d - b.d).forEach(p => { const k = Math.round(x2(p.d) / 9); const n = bins.get(k) || 0; bins.set(k, n + 1); p.row = n; });
+  const bins = new Map(); [...pts].sort((a, b) => a.d - b.d).forEach(p => { const k = Math.round(x2(p.d) / 9), n = bins.get(k) || 0; bins.set(k, n + 1); p.row = n; });
   pts.forEach(p => { const sel = p.c.iso3 === state.iso, cy = H2 - m2.b - 10 - p.row * 9;
-    const c = el("circle", { cx: x2(p.d), cy, r: sel ? 6 : 4, fill: p.d < 0 ? css["green-deep"] : css.plum, stroke: sel ? css.ink : css.surface, "stroke-width": sel ? 2.5 : 1, style: "cursor:pointer" });
+    const c = el("circle", { cx: x2(p.d), cy, r: sel ? 6 : 4, fill: p.d < 0 ? css["green-deep"] : css.plum, stroke: sel ? css.ink : css["surface-3"], "stroke-width": sel ? 2.5 : 1, style: "cursor:pointer" });
     hover(c, () => `<b>${p.c.country}</b><br>error ${fmt(p.c.loco_m1, 2)} → ${fmt(p.c.loco_m2, 2)} with policy (${sgn(p.d, 3)})`); c.addEventListener("click", () => select(p.c.iso3)); s2.appendChild(c); });
-  $("#lo-sub").textContent = `${helped} of ${pts.length} countries forecast better with the policy term (binomial p = ${fmt(S.meta.kpis[3].p, 2)}). ${state.iso ? byIso(state.iso).country + " is outlined." : "Click a dot to follow that country."}`;
+  $("#lo-sub").textContent = `${helped} of ${pts.length} countries forecast better with the policy term (binomial p = ${fmt(S.meta.kpis[3].p, 2)}). ${state.iso ? byIso(state.iso).country + " is outlined." : "Click a dot to focus that country."}`;
 }
 
 /* ============================================================ watchlist ============================================================ */
 let sortKey = "concern_rank", sortAsc = true;
 function drawWatchlist() {
-  const i = yi(state.year), tb = $("#wl tbody"); tb.replaceChildren();
-  $("#wl-level").innerHTML = `<span>${outLabel()} ${state.year}</span>`; $("#wl-change").innerHTML = `<span>Change ${state.from}→${state.to}</span>`; $("#wl-pol").innerHTML = `<span>${clLabel()} ${state.year}</span>`;
+  const tb = $("#wl tbody"); tb.replaceChildren();
+  $("#wl-level").innerHTML = `<span>${outLabel()}, ${state.year}</span>`; $("#wl-change").innerHTML = `<span>Change ${state.from}→${state.to}</span>`; $("#wl-pol").innerHTML = `<span>${clLabel()}, ${state.year}</span>`;
   const rows = visible().map(c => ({ ...c, _level: valAt(c.iso3, "out", state.year), _change: change(c.iso3), _pol: valAt(c.iso3, "cl", state.year) }))
     .sort((a, b) => { const A = a[sortKey], B = b[sortKey]; if (A === null || A === undefined) return 1; if (B === null || B === undefined) return -1; return (typeof A === "string" ? A.localeCompare(B) : A - B) * (sortAsc ? 1 : -1); });
-  for (const c of rows) { const tr = document.createElement("tr"); tr.dataset.iso = c.iso3; if (c.iso3 === state.iso) tr.classList.add("sel");
+  for (const c of rows) { const tr = document.createElement("tr"); if (c.iso3 === state.iso) tr.classList.add("sel");
     const pct = Math.round((c.concern_stability ?? 0) * 100), parts = c.concern_parts ? Object.entries(c.concern_parts).map(([k, v]) => `${k.replace("out_", "").replace("_pct", "").replace(/_/g, " ")}: ${fmt(v, 2)}`).join("<br>") : "";
     tr.innerHTML = `<td class="num">${fmt(c.concern_rank, 0)}</td><td><b>${c.country}</b></td><td style="color:var(--ink-faint)">${c.subregion}</td><td class="num">${fmt(c.concern, 2)}</td><td class="num">${fmt(c._level)}${outUnit() === "%" ? "%" : ""}</td><td class="num" style="color:${c._change > 0 ? "var(--plum)" : c._change < 0 ? "var(--green-deep)" : "inherit"}">${sgn(c._change, 1)}</td><td class="num">${fmt(c._pol, 0)}</td><td><span class="bar8" title="${pct}% of random weightings put it in the worst ten"><i style="width:${pct}%"></i></span></td>`;
     tr.addEventListener("click", () => select(c.iso3)); hover(tr, () => `<b>${c.country}</b> · concern ${fmt(c.concern, 2)}, rank ${c.concern_rank}<br><small>component scores (flag + percentile)<br>${parts}</small><br><small>in the worst ten under ${pct}% of random weightings</small>`); tb.appendChild(tr); }
+  if (!rows.length) { const tr = document.createElement("tr"); tr.innerHTML = `<td colspan="8" style="color:var(--ink-faint)">No countries are ticked.</td>`; tb.appendChild(tr); }
   $$("#wl th[data-k]").forEach(th => { if (th.dataset.k === sortKey) th.setAttribute("aria-sort", sortAsc ? "ascending" : "descending"); else th.removeAttribute("aria-sort"); });
 }
 
 /* ============================================================ specification curve ============================================================ */
 function drawSpec() {
   const dims = S.model.spec_dims, lab = S.model.spec_labels, chips = $("#spec-chips"); chips.replaceChildren();
-  for (const [dim, vals] of Object.entries(dims)) { const wrap = document.createElement("span"); wrap.style.cssText = "display:inline-flex;gap:6px;align-items:center;margin-right:8px"; const l = document.createElement("span"); l.className = "lbl"; l.style.cssText = "font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em;font-weight:700"; l.textContent = dim; wrap.appendChild(l);
-    for (const v of vals) { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; const on = !state.spec[dim] || state.spec[dim].has(String(v)); b.setAttribute("aria-pressed", String(on)); b.textContent = lab[v] || (dim === "lag" ? `lag ${v}` : v);
+  for (const [dim, vals] of Object.entries(dims)) { const wrap = document.createElement("span"); wrap.style.cssText = "display:inline-flex;gap:6px;align-items:center;margin-right:8px;flex-wrap:wrap"; const l = document.createElement("span"); l.style.cssText = "font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em;font-weight:700"; l.textContent = dim; wrap.appendChild(l);
+    for (const v of vals) { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", String(!state.spec[dim] || state.spec[dim].has(String(v)))); b.textContent = lab[v] || (dim === "lag" ? `lag ${v}` : v);
       b.addEventListener("click", () => { const set = state.spec[dim] || new Set(vals.map(String)); set.has(String(v)) ? set.delete(String(v)) : set.add(String(v)); state.spec[dim] = set; drawSpec(); }); wrap.appendChild(b); } chips.appendChild(wrap); }
   const on = s => Object.entries(state.spec).every(([dim, set]) => set.has(String(dim === "exposure" ? s.e : dim === "lag" ? s.lag : dim === "income" ? s.inc : dim === "controls" ? s.ctl : s.est)));
   const svg = $("#c-spec"), W = 900, H = 250, m = { t: 30, r: 16, b: 34, l: 52 }; svg.replaceChildren();
@@ -726,7 +902,7 @@ function drawSpec() {
     g.appendChild(el("rect", { x: x(i) - 1.3, y: m.t, width: 2.6, height: H - m.t - m.b, fill: "transparent" }));
     hover(g, () => `<b>${sgn(s.c, 3)}</b> [${sgn(s.lo, 2)}, ${sgn(s.hi, 2)}] · p = ${fmt(s.p, 3)}<br><small>${lab[s.e] || s.e} · lag ${s.lag} · ${lab[s.inc]} · ${lab[s.ctl]} · ${lab[s.est]} · n ${s.n}</small>`); svg.appendChild(g); });
   svg.appendChild(txt("336 specifications, sorted by estimate →", { x: (m.l + W - m.r) / 2, y: H - 8, "text-anchor": "middle", class: "axis" }));
-  svg.appendChild(txt("points of anaemia per within-country SD of the dose", { x: m.l - 8, y: m.t - 4, "text-anchor": "start", class: "axis" }));
+  svg.appendChild(txt("points of anaemia per within-country SD of the dose", { x: m.l - 8, y: m.t - 12, "text-anchor": "start", class: "axis" }));
   const ss = S.meta.spec_summary;
   $("#spec-read").innerHTML = shown === d.length ? `Of <b>${ss.n}</b> specifications, <b>${ss.n_excludes_zero}</b> have an interval that excludes zero — ${ss.n_negative_excludes_zero} pointing to less anaemia, ${ss.n_positive_excludes_zero} to more. The median estimate is <b>${sgn(ss.median, 3)}</b>. If the effect were real and large, this picture would lean. It does not.`
     : `<b>${shown}</b> of ${d.length} specifications match the chips; <b>${z}</b> of those exclude zero (${neg} negative, ${z - neg} positive).`;
@@ -734,46 +910,42 @@ function drawSpec() {
 
 /* ============================================================ rules ============================================================ */
 function drawRules() {
-  const g = $("#rules"); g.replaceChildren();
-  const groups = d3.group(S.meta.rules, r => r.cluster);
-  for (const [k, lab] of Object.entries(S.meta.clusters)) { if (!groups.has(k)) continue; const cov = S.meta.cluster_coverage_2023[k];
-    const d = document.createElement("div"); d.className = "rule" + (k === state.cl ? " cur" : ""); d.style.cursor = "pointer";
+  const g = $("#rules"); g.replaceChildren(); const groups = d3.group(S.meta.rules, r => r.cluster);
+  for (const [k, lab] of Object.entries(S.meta.clusters)) { if (!groups.has(k)) continue; const cov = S.meta.cluster_coverage_2023[k], d = document.createElement("div"); d.className = "rule" + (k === state.cl ? " cur" : "");
     d.innerHTML = `<h3>${lab}<small>${cov.countries_with_any} of 49 · mean ${fmt(cov.mean_stock, 1)}</small></h3><ul>${groups.get(k).map(r => `<li><code>${r.pattern.replace(/</g, "&lt;")}</code>${r.note}</li>`).join("")}</ul>`;
-    d.addEventListener("click", () => { state.cl = k; $("#f-cl").value = k; render(); }); g.appendChild(d); }
+    d.addEventListener("click", () => { state.cl = k; render(); }); g.appendChild(d); }
 }
 
 /* ============================================================ render + boot ============================================================ */
 function render() {
   toHash(); readTokens();
-  $("#f-out").value = state.out; $("#f-cl").value = state.cl; $("#f-iso").value = state.iso || ""; $("#f-year").value = state.year; $("#f-yearl").textContent = state.year;
+  $("#f-out").value = state.out; $("#f-cl").value = state.cl; $("#f-year").value = state.year; $("#f-yearl").textContent = state.year;
   $("#f-from").value = state.from; $("#f-to").value = state.to; $("#f-winl").textContent = `${state.from}–${state.to}`;
-  pressed("#f-metric", state.metric); pressed("#f-region", state.region); pressed("#f-y2", state.y2);
+  pressed("#f-metric", state.metric); pressed("#f-y2", state.y2);
   drawAnswer(); drawMap(); drawRank(); drawTrends(); drawScatter(); drawLadder(); drawLoco(); drawWatchlist(); drawRules();
 }
 Promise.all(["meta", "countries", "series", "model"].map(n => fetch(`data/${n}.json`).then(r => r.json()))).then(([meta, countries, series, model]) => {
   Object.assign(S, { meta, countries, series, model, byIso: Object.fromEntries(countries.map(c => [c.iso3, c])) });
-  readTokens(); fromHash();
-  $("#dv").textContent = meta.data_version; $("#ra").textContent = new Date(meta.results_run_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  readTokens(); fromHash(); wirePops();
+  $("#dv").textContent = meta.data_version; $("#ra").textContent = new Date(meta.results_run_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
   $("#f-out").innerHTML = Object.entries(meta.outcomes).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join("");
   $("#f-cl").innerHTML = Object.entries(meta.clusters).map(([k, v]) => `<option value="${k}">${v}</option>`).join("");
-  $("#f-iso").innerHTML = `<option value="">All (average)</option>` + [...countries].sort((a, b) => a.country.localeCompare(b.country)).map(c => `<option value="${c.iso3}">${c.country}</option>`).join("");
   $("#f-out").addEventListener("change", e => { state.out = e.target.value; render(); });
   $("#f-cl").addEventListener("change", e => { state.cl = e.target.value; render(); });
-  $("#f-iso").addEventListener("change", e => { state.iso = e.target.value || null; render(); });
   $("#f-year").addEventListener("input", e => { state.year = +e.target.value; render(); });
   $("#f-from").addEventListener("input", e => { state.from = Math.min(+e.target.value, state.to - 1); render(); });
   $("#f-to").addEventListener("input", e => { state.to = Math.max(+e.target.value, state.from + 1); render(); });
   $$("#f-metric button").forEach(b => b.addEventListener("click", () => { state.metric = b.dataset.v; render(); }));
-  $$("#f-region button").forEach(b => b.addEventListener("click", () => { state.region = b.dataset.v; render(); }));
   $$("#f-y2 button").forEach(b => b.addEventListener("click", () => { state.y2 = b.dataset.v; render(); }));
-  $("#f-reset").addEventListener("click", () => { Object.assign(state, DEF); state.spec = {}; render(); drawSpec(); });
+  $("#f-reset").addEventListener("click", () => { Object.assign(state, DEF); state.sel = null; state.spec = {}; render(); drawSpec(); });
   $("#rank-q").addEventListener("input", drawRank);
   $("#share").addEventListener("click", e => { e.preventDefault(); navigator.clipboard?.writeText(location.href).then(() => { e.target.textContent = "link copied"; setTimeout(() => e.target.textContent = "copy a link to this view", 1600); }); });
   $$("#wl th[data-k]").forEach(th => th.addEventListener("click", () => { const k = th.dataset.k; if (k === sortKey) sortAsc = !sortAsc; else { sortKey = k; sortAsc = k === "concern_rank" || k === "country" || k === "subregion"; } drawWatchlist(); }));
   const tc = $("#trendcard"); tc.addEventListener("mousemove", trendCross); tc.addEventListener("mouseleave", trendHide);
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
   prepGeo(); drawKpis(); render(); drawEvents(); drawSpec();
-}).catch(e => { $("#kpis").innerHTML = `<p>The data files could not be loaded (${e}). Serve this folder over HTTP rather than opening the file directly.</p>`; console.error(e); });
+  const openPop = new URLSearchParams(location.search).get("pop"); if (openPop && document.getElementById(openPop)) { const b = document.querySelector(`[data-pop="${openPop}"]`); b?.scrollIntoView({ block: "start" }); b?.click(); }
+}).catch(e => { $("#answer").innerHTML = `The data files could not be loaded (${e}). Serve this folder over HTTP rather than opening the file directly.`; console.error(e); });
 </script>
 </body>
 </html>
