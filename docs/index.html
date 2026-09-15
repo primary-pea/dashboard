@@ -2,27 +2,532 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dashboard · Primary Pea</title>
+<title>The Delivery Gap · Primary Pea</title>
+<meta name="description" content="Policies written and anaemia measured, side by side, for 49 sub-Saharan African countries. Every number reads from the same hash-stamped results as the report.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"><meta name="theme-color" content="#F4F8F0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap">
 <style>
-:root{color-scheme:light;--bg:#F4F8F0;--ink:#1E2A21;--ink-soft:#4B5A4F;--ink-faint:#74857A;--plum:#7A2E5A;--gold:#8F6A12;--green-deep:#237A38}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#111A14;--ink:#ECF2EA;--ink-soft:#C3CEC5;--ink-faint:#8A978D;--plum:#D48BB4;--gold:#E2C066;--green-deep:#4CCB66}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#111A14;--ink:#ECF2EA;--ink-soft:#C3CEC5;--ink-faint:#8A978D;--plum:#D48BB4;--gold:#E2C066;--green-deep:#4CCB66}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6}
-.wrap{max-width:820px;margin:0 auto;padding:12vh 20px}
-h1{font-family:Manrope,system-ui,sans-serif;font-weight:800;font-size:clamp(30px,5vw,48px);letter-spacing:-.02em;margin:0 0 .3em}
-h1 span{color:var(--plum)}
-p{color:var(--ink-soft);max-width:60ch;font-size:18px}
-a{color:var(--plum);text-decoration:none}a:hover{text-decoration:underline}
-.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-.small{font-size:13px;color:var(--ink-faint);margin-top:40px}
+/* Palette and type follow the project site (primary-pea.github.io/assets/site.css) so the three pages read as one. */
+:root{color-scheme:light;
+  --bg:#F4F8F0;--surface:#FBFDF8;--surface-2:#EDF3E6;
+  --ink:#1E2A21;--ink-soft:#4B5A4F;--ink-faint:#74857A;
+  --line:rgba(30,42,33,.14);--line-2:rgba(30,42,33,.30);
+  --plum:#7A2E5A;--plum-soft:#9C4B7A;--gold:#8F6A12;--gold-soft:#D9B24C;--green:#2FB24A;--green-deep:#237A38;
+  --tint-plum:#F2E4EC;--tint-gold:#F7EFD8;--tint-green:#E3F0DC;
+  --head:"Manrope",system-ui,sans-serif;--text:"Inter",system-ui,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#111A14;--surface:#182219;--surface-2:#202C22;
+  --ink:#ECF2EA;--ink-soft:#C3CEC5;--ink-faint:#8A978D;
+  --line:rgba(236,242,234,.14);--line-2:rgba(236,242,234,.30);
+  --plum:#D48BB4;--plum-soft:#B86F9A;--gold:#E2C066;--gold-soft:#C9A64A;--green:#4CCB66;--green-deep:#2FB24A;
+  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#111A14;--surface:#182219;--surface-2:#202C22;
+  --ink:#ECF2EA;--ink-soft:#C3CEC5;--ink-faint:#8A978D;
+  --line:rgba(236,242,234,.14);--line-2:rgba(236,242,234,.30);
+  --plum:#D48BB4;--plum-soft:#B86F9A;--gold:#E2C066;--gold-soft:#C9A64A;--green:#4CCB66;--green-deep:#2FB24A;
+  --tint-plum:#2D1E29;--tint-gold:#2C2718;--tint-green:#1B2C1F}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.6}
+a{color:var(--plum)}a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+header.site{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:20}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:12px}
+.brand{font-family:var(--head);font-weight:800;letter-spacing:-.01em;font-size:18px;color:var(--ink);text-decoration:none}
+.brand span{color:var(--green-deep)}
+nav.site a{font-size:14px;font-weight:600;color:var(--ink-soft);margin-left:18px;text-decoration:none}
+nav.site a::after{content:" ↗";color:var(--ink-faint)}
+main{padding-block:32px 64px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(30px,4.4vw,50px);line-height:1.08;letter-spacing:-.02em;margin:.25em 0 .35em;text-wrap:balance;max-width:19ch}
+h2{font-family:var(--head);font-weight:800;font-size:clamp(22px,2.6vw,30px);line-height:1.18;letter-spacing:-.015em;margin:0 0 .25em;text-wrap:balance}
+h3{font-family:var(--head);font-weight:700;font-size:17px;margin:0 0 .2em}
+.lead{font-size:19px;color:var(--ink-soft);max-width:64ch;margin:0}
+p{max-width:72ch}
+section{margin-top:56px}
+.sechead{margin-bottom:20px}
+.sechead p{color:var(--ink-soft);margin:.3em 0 0}
+.stamp{font-size:13px;color:var(--ink-faint);margin-top:22px}
+.stamp code{background:var(--surface-2);padding:1px 6px;border-radius:4px;font-size:12px}
+
+/* claim strip */
+.kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:2px}
+.kpi .kl{font-size:13px;font-weight:600;color:var(--ink-soft);min-height:2.6em}
+.kpi .kv{font-family:var(--head);font-weight:800;font-size:34px;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .ku{font-size:12.5px;color:var(--ink-faint);font-weight:600}
+.kpi .kc{font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;margin-top:6px;border-top:1px solid var(--line);padding-top:8px}
+.kpi .kr{font-size:13px;color:var(--ink-soft);margin-top:6px}
+.kpi.lead-kpi .kv{color:var(--plum)}
+
+/* two-panel chart */
+.gapcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.gaptop{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+.pick{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+label.pl{font-size:13px;font-weight:600;color:var(--ink-soft)}
+select,button.ghost{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink)}
+button.ghost{cursor:pointer;font-weight:600}
+button.ghost:hover{background:var(--surface-2)}
+.panelwrap{display:grid;gap:4px}
+.ptitle{font-size:13.5px;font-weight:700;color:var(--ink);margin:10px 0 0}
+.psub{font-size:12.5px;color:var(--ink-faint);margin:0 0 2px}
+svg.chart{width:100%;height:auto;display:block;overflow:visible}
+.gridline{stroke:var(--line);stroke-width:1}
+text.axis,.axis text{font-size:11px;fill:var(--ink-faint);font-family:var(--text)}
+svg.chart text{font-family:var(--text)}
+.mark-label{font-size:11px;font-weight:600;font-family:var(--text)}
+.readout{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:15px;color:var(--ink-soft);max-width:78ch}
+.readout b{color:var(--ink)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.badge{font-size:12px;font-weight:600;border:1px solid var(--line-2);border-radius:999px;padding:3px 10px;color:var(--ink-soft);background:var(--surface-2)}
+.badge.pos{border-color:var(--green-deep);color:var(--green-deep);background:var(--tint-green)}
+.badge.neg{border-color:var(--plum);color:var(--plum);background:var(--tint-plum)}
+
+/* scatter */
+.scatwrap{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:900px){.scatwrap{grid-template-columns:1.35fr .65fr}}
+.dot{cursor:pointer}
+.dot:focus{outline:2px solid var(--plum);outline-offset:2px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-soft);margin-top:10px}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:baseline}
+.tails{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.tails h3{margin-bottom:8px}
+.taillist{list-style:none;margin:0 0 14px;padding:0;font-size:14px}
+.taillist li{display:flex;justify-content:space-between;gap:10px;padding:4px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.taillist li:last-child{border-bottom:0}
+.taillist button{all:unset;cursor:pointer;color:var(--ink);font-weight:600}
+.taillist button:hover{color:var(--plum);text-decoration:underline}
+.taillist .v{color:var(--ink-faint)}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;position:sticky;top:0;background:var(--surface);cursor:pointer;user-select:none}
+th[aria-sort] span::after{content:" ▾";color:var(--plum)}
+th[aria-sort="ascending"] span::after{content:" ▴"}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:hover{background:var(--surface-2)}
+tbody tr.sel{background:var(--tint-plum)}
+.bar{display:block;height:8px;border-radius:999px;background:var(--surface-2);min-width:70px;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--plum-soft)}
+.cname{font-weight:600;cursor:pointer}
+.cname:hover{color:var(--plum);text-decoration:underline}
+details{margin-top:14px;font-size:14px}
+summary{cursor:pointer;font-weight:600;color:var(--ink-soft)}
+footer.site{border-top:1px solid var(--line);margin-top:64px;padding-block:24px 48px;font-size:13.5px;color:var(--ink-faint)}
+footer.site p{max-width:82ch}
+.tip{position:fixed;pointer-events:none;z-index:40;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.45;padding:7px 10px;border-radius:7px;opacity:0;transition:opacity .12s;max-width:240px}
+.tip b{font-size:13px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
-<body><div class="wrap">
-<div class="eyebrow">Primary Pea · Women in Data 2026 Datathon</div>
-<h1>The dashboard is <span>on its way</span>.</h1>
-<p>Filters over the scaffold's results for 49 sub-Saharan African countries: the anaemia map and trends, the coefficient ladder and its checks, the specification curve, the event studies, the context ranking and its tails. Everything reads from the same hash-stamped results as the report (scaffold v2.0, data version afe63e46c26b).</p>
-<p>Until it lands: <a href="https://primary-pea.github.io/">the project site</a> · <a href="https://primary-pea.github.io/ink-and-iron/">the deck</a> · <a href="https://github.com/primary-pea/wid-datathon-2026">the repository</a>.</p>
-<p class="small">Placeholder page, 14 September 2026.</p>
-</div></body>
+<body>
+
+<header class="site"><div class="wrap">
+  <a class="brand" href="./">Primary <span>Pea</span> · The Delivery Gap</a>
+  <nav class="site">
+    <a href="https://primary-pea.github.io/">Project site</a>
+    <a href="https://primary-pea.github.io/ink-and-iron/">The deck</a>
+    <a href="https://github.com/primary-pea/wid-datathon-2026">Code &amp; data</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+
+  <p class="eyebrow">Women in Data 2026 · What's Cooking · Eat track</p>
+  <h1>Policies are written. Anaemia is measured.</h1>
+  <p class="lead">Across 49 sub-Saharan African countries the number of nutrition policies on the books grew roughly tenfold between 2000 and 2015. Anaemia in women aged 15–49 fell over those years — and has risen every year since, while the policy count stopped moving. This page lets you check that claim country by country.</p>
+  <p class="stamp">Scaffold v2.0 · data version <code id="dv">…</code> · results generated <span id="ra">…</span>. Nothing is computed here: every figure is read from the same hash-stamped result files as the written report.</p>
+
+  <section id="claim">
+    <div class="sechead">
+      <h2>What the model found</h2>
+      <p>Four numbers, each with the uncertainty attached. The headline is a null result, and the interesting part is how much it does and does not rule out.</p>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section id="gap">
+    <div class="sechead">
+      <h2>Documents and blood, on the same years</h2>
+      <p>Two panels, one time axis. The top panel counts what governments have written down. The bottom panel is what was measured in women. Pick any country, or keep the 49-country average.</p>
+    </div>
+    <div class="gapcard">
+      <div class="gaptop">
+        <div class="pick">
+          <label class="pl" for="country">Country</label>
+          <select id="country"></select>
+          <button class="ghost" id="reset" type="button">All 49 (average)</button>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--gold)"></i>Policies on the books</span>
+          <span><i style="background:var(--plum)"></i>Anaemia, women 15–49</span>
+        </div>
+      </div>
+      <div class="panelwrap">
+        <p class="ptitle" id="t-stock">Policies on the books</p>
+        <p class="psub" id="s-stock">Active anaemia-cluster policy records, WHO GIFNA registry</p>
+        <svg class="chart" id="c-stock" viewBox="0 0 760 150" role="img" aria-label="Policies on the books, 2000 to 2023"></svg>
+        <p class="ptitle" id="t-anae">Anaemia, % of women aged 15–49</p>
+        <p class="psub" id="s-anae">WHO estimates republished through FAOSTAT</p>
+        <svg class="chart" id="c-anae" viewBox="0 0 760 170" role="img" aria-label="Anaemia prevalence, 2000 to 2023"></svg>
+      </div>
+      <div class="readout" id="readout"></div>
+      <div class="badges" id="badges"></div>
+      <details>
+        <summary>Show the numbers</summary>
+        <div class="tablewrap" style="margin-top:10px"><table id="yeartable"><thead><tr><th><span>Year</span></th><th class="num"><span>Policies on the books</span></th><th class="num"><span>Anaemia %</span></th></tr></thead><tbody></tbody></table></div>
+      </details>
+    </div>
+  </section>
+
+  <section id="scatter">
+    <div class="sechead">
+      <h2>Having more policies does not predict doing better</h2>
+      <p>Each dot is a country. Across the bottom: how many anaemia policies it has on the books, averaged over the last years of the panel. Up the side: how far its anaemia sits from what its income, health burden and geography predict. Below the line is better than predicted. The cloud has no tilt — that is the finding.</p>
+    </div>
+    <div class="scatwrap">
+      <div class="gapcard">
+        <svg class="chart" id="c-scatter" viewBox="0 0 760 460" role="img" aria-label="Policy stock against the residual from the context model, one dot per country"></svg>
+        <div class="legend">
+          <span><i style="background:var(--green-deep);border-radius:50%"></i>Better than context predicts</span>
+          <span><i style="background:var(--plum)"></i>Worse than context predicts</span>
+          <span><i style="background:transparent;border:1.5px solid var(--ink-faint);border-radius:50%"></i>The other 27</span>
+        </div>
+      </div>
+      <div class="tails">
+        <h3>Doing better than predicted</h3>
+        <ul class="taillist" id="tail-pos"></ul>
+        <h3>Doing worse than predicted</h3>
+        <ul class="taillist" id="tail-neg"></ul>
+        <p style="font-size:13px;color:var(--ink-faint);margin:0">The two groups' policy records are not distinguishable: Mann-Whitney p = 0.11 on the policy-stock contrast. Six countries have no context ranking because the panel lacks the controls for them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="watchlist">
+    <div class="sechead">
+      <h2>Where attention should go</h2>
+      <p>The team's concern score over four women's nutrition indicators: a country is flagged for sitting in the worst quarter and for failing to improve, and its percentile is added. Because the weighting is a judgement call, the last column shows how often a country still lands in the worst ten when the four weights are drawn at random 500 times. A short bar means the ranking depends on the weights; a full bar means it does not.</p>
+    </div>
+    <div class="tablewrap">
+      <table id="wl">
+        <thead><tr>
+          <th data-k="concern_rank" aria-sort="ascending"><span>#</span></th>
+          <th data-k="country"><span>Country</span></th>
+          <th data-k="concern" class="num"><span>Concern</span></th>
+          <th data-k="anaemia_2023" class="num"><span>Anaemia 2023</span></th>
+          <th data-k="anaemia_change" class="num"><span>Change since 2015</span></th>
+          <th data-k="stock_2023" class="num"><span>Policies</span></th>
+          <th data-k="concern_stability"><span>Rank stability</span></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="specs">
+    <div class="sechead">
+      <h2>Every way we could have cut it</h2>
+      <p>336 defensible specifications — different policy measures, lags, income controls, control sets and estimators — each re-fitted and sorted by its estimate. A dot that clears the zero line is a specification whose confidence interval excludes no effect.</p>
+    </div>
+    <div class="gapcard">
+      <svg class="chart" id="c-spec" viewBox="0 0 760 240" role="img" aria-label="Specification curve of 336 estimates sorted by size"></svg>
+      <p class="readout" id="spec-read"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site"><div class="wrap">
+  <p><b>Primary Pea</b> — Ramyashree Shetty, Alison Nichols, Hope Winsor, Saarah Hossain, Tatiana Gabel. Women in Data 2026 Datathon, Eat track.</p>
+  <p>Data: WHO, UNICEF, FAOSTAT, UN IGME, World Bank, WHO GIFNA, GFDx, DHS, WHO PCT databank, Nunn &amp; Puga. Sources are listed in full on the <a href="https://primary-pea.github.io/method/">method page</a>; the panel, the pipeline and the tests are at <a href="https://github.com/primary-pea/wid-datathon-2026">github.com/primary-pea/wid-datathon-2026</a>.</p>
+  <p>This page reads four precomputed files written from the scaffold's <code>results/</code>. There is no server and no live query: re-running the pipeline and regenerating the files is the only way a number here can change.</p>
+</div></footer>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const fmt = (v, d = 1) => v === null || v === undefined ? "—" : v.toFixed(d);
+const sign = (v, d = 2) => v === null ? "—" : (v > 0 ? "+" : "−") + Math.abs(v).toFixed(d);
+const kpiValue = k => k.key === "loco" ? String(k.value)
+  : k.key === "bounds" ? "≥ " + k.value.toFixed(2)
+  : (k.value > 0 ? "+" : "−") + Math.abs(k.value).toFixed(2);
+const S = {};                                     // loaded data
+let selected = null;                              // iso3 or null for the regional average
+
+/* ---------- tiny chart helpers (no library; the CSP on this host allows none) ---------- */
+const scale = (d0, d1, r0, r1) => v => r0 + (v - d0) / (d1 - d0 || 1) * (r1 - r0);
+const el = (n, a = {}, kids = []) => {
+  const e = document.createElementNS("http://www.w3.org/2000/svg", n);
+  for (const [k, v] of Object.entries(a)) if (v !== null && v !== undefined) e.setAttribute(k, v);
+  for (const k of [].concat(kids)) e.appendChild(k);
+  return e;
+};
+const txt = (s, a) => { const t = el("text", a); t.textContent = s; return t; };
+const niceTicks = (lo, hi, n = 4) => {
+  const raw = (hi - lo) / n, mag = Math.pow(10, Math.floor(Math.log10(raw || 1)));
+  const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw) || mag * 10;
+  const out = []; for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(6));
+  return out;
+};
+
+/* Draws one panel: a single series against the shared year axis. Gaps stay gaps. */
+function panel(svg, values, opts) {
+  const W = 760, H = +svg.getAttribute("viewBox").split(" ")[3];
+  const m = { t: 10, r: 14, b: opts.axis ? 24 : 8, l: 40 };
+  svg.replaceChildren();
+  const years = S.series.years;
+  const present = values.map((v, i) => [years[i], v]).filter(d => d[1] !== null);
+  if (!present.length) { svg.appendChild(txt("no data", { x: W / 2, y: H / 2, "text-anchor": "middle", class: "axis" })); return; }
+  const lo = opts.zero ? 0 : Math.min(...present.map(d => d[1])), hi = Math.max(...present.map(d => d[1]));
+  const pad = (hi - lo) * .12 || 1;
+  const x = scale(years[0], years[years.length - 1], m.l, W - m.r);
+  const y = scale(opts.zero ? 0 : lo - pad, hi + pad, H - m.b, m.t);
+
+  for (const t of niceTicks(opts.zero ? 0 : lo - pad, hi + pad, opts.ticks || 3)) {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), class: "gridline" }));
+    svg.appendChild(txt(opts.pct ? t + "%" : t, { x: m.l - 7, y: y(t) + 4, "text-anchor": "end", class: "axis" }));
+  }
+  if (opts.axis) for (const t of [2000, 2005, 2010, 2015, 2020, 2023])
+    svg.appendChild(txt(t, { x: x(t), y: H - 6, "text-anchor": "middle", class: "axis" }));
+
+  // one polyline per unbroken run, so a missing year is a gap rather than an invented straight line
+  let run = [];
+  const flush = () => {
+    if (run.length > 1) svg.appendChild(el("polyline", {
+      points: run.map(d => `${x(d[0])},${y(d[1])}`).join(" "), fill: "none",
+      stroke: opts.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round"
+    }));
+    else if (run.length === 1) svg.appendChild(el("circle", { cx: x(run[0][0]), cy: y(run[0][1]), r: 3, fill: opts.color }));
+    run = [];
+  };
+  values.forEach((v, i) => { if (v === null) flush(); else run.push([years[i], v]); });
+  flush();
+
+  for (const mk of opts.marks || []) {
+    if (mk.year === null || mk.year < years[0] || mk.year > years[years.length - 1]) continue;
+    svg.appendChild(el("line", { x1: x(mk.year), x2: x(mk.year), y1: m.t, y2: H - m.b, stroke: "var(--line-2)", "stroke-width": 1, "stroke-dasharray": "3 3" }));
+    svg.appendChild(txt(mk.label, { x: x(mk.year) + 4, y: m.t + 10, class: "mark-label", fill: "var(--ink-faint)" }));
+  }
+  // the last observed point, labelled — the value a reader actually wants
+  const last = present[present.length - 1];
+  svg.appendChild(el("circle", { cx: x(last[0]), cy: y(last[1]), r: 4, fill: opts.color, stroke: "var(--surface)", "stroke-width": 2 }));
+  svg.appendChild(txt(opts.pct ? fmt(last[1]) + "%" : fmt(last[1], opts.dec ?? 1),
+    { x: x(last[0]) - 6, y: y(last[1]) - 9, "text-anchor": "end", class: "mark-label", fill: opts.color }));
+}
+
+/* ---------- the two-panel view ---------- */
+const mean = arr => { const v = arr.filter(x => x !== null); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; };
+function regional(key) {
+  return S.series.years.map((_, i) => {
+    const v = S.countries.map(c => S.series.by_iso[c.iso3][key][i]).filter(x => x !== null && x !== undefined);
+    return v.length ? +(v.reduce((a, b) => a + b, 0) / v.length).toFixed(3) : null;
+  });
+}
+function drawGap() {
+  const c = selected ? S.countries.find(x => x.iso3 === selected) : null;
+  const stock = c ? S.series.by_iso[c.iso3].stock : regional("stock");
+  const anae = c ? S.series.by_iso[c.iso3].anaemia : regional("anaemia");
+  const marks = c ? [
+    c.first_policy_year ? { year: c.first_policy_year, label: "first policy" } : null,
+    c.mandate_year ? { year: c.mandate_year, label: "flour mandate" } : null
+  ].filter(Boolean) : [];
+
+  $("#t-stock").textContent = c ? `Policies on the books · ${c.country}` : "Policies on the books · average of 49 countries";
+  $("#t-anae").textContent = c ? `Anaemia, % of women aged 15–49 · ${c.country}` : "Anaemia, % of women aged 15–49 · average of 49 countries";
+  panel($("#c-stock"), stock, { color: "var(--gold)", zero: true, dec: c ? 0 : 2, marks });
+  panel($("#c-anae"), anae, { color: "var(--plum)", axis: true, pct: true, ticks: 4, marks });
+
+  const yrs = S.series.years, i15 = yrs.indexOf(2015), i23 = yrs.length - 1;
+  if (c) {
+    const d = c.resid_context;
+    $("#readout").innerHTML = `<b>${c.country}</b> has <b>${fmt(c.stock_2023, 0)}</b> anaemia policies on the books`
+      + (c.first_policy_year ? `, the first recorded in ${c.first_policy_year}` : "")
+      + `. Anaemia among women aged 15–49 stood at <b>${fmt(c.anaemia_2023)}%</b> in 2023, ${c.anaemia_change > 0 ? "up" : "down"} <b>${Math.abs(c.anaemia_change).toFixed(1)} points</b> since 2015`
+      + (d === null ? ". It is not in the context ranking: the panel is missing one of the controls."
+        : ` — ${Math.abs(d).toFixed(1)} points ${d < 0 ? "<b>below</b>" : "<b>above</b>"} what its income, health burden and geography predict.`);
+    const b = [];
+    if (c.concern_rank) b.push(`<span class="badge">Concern rank ${c.concern_rank} of 49</span>`);
+    if (c.rank_context) b.push(`<span class="badge">Context rank ${c.rank_context} of 43</span>`);
+    if (c.group) b.push(`<span class="badge ${c.group.startsWith("positive") ? "pos" : "neg"}">${c.group.startsWith("positive") ? "Better than predicted" : "Worse than predicted"}</span>`);
+    b.push(`<span class="badge">Flour fortification mandate: ${c.mandate_status === "YES" ? c.mandate_year || "yes" : (c.mandate_status || "unknown").toLowerCase()}</span>`);
+    b.push(`<span class="badge">${c.policy_helps ? "Policy improves" : "Policy does not improve"} the forecast</span>`);
+    $("#badges").innerHTML = b.join("");
+  } else {
+    $("#readout").innerHTML = `Averaged over the 49 countries, the policy count rose from <b>${fmt(stock[0], 2)}</b> per country in 2000 to <b>${fmt(stock[i15], 2)}</b> in 2015, then stopped: it is <b>${fmt(stock[i23], 2)}</b> in 2023. Anaemia fell <b>${(anae[0] - anae[i15]).toFixed(1)} points</b> over the years the count was climbing, then rose <b>${(anae[i23] - anae[i15]).toFixed(1)} points</b> over the years it was flat. <b>37 of the 49</b> countries have more anaemia in 2023 than in 2015.`;
+    $("#badges").innerHTML = "";
+  }
+  const tb = $("#yeartable tbody"); tb.replaceChildren();
+  yrs.forEach((yr, i) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${yr}</td><td class="num">${fmt(stock[i], c ? 0 : 2)}</td><td class="num">${fmt(anae[i])}</td>`;
+    tb.appendChild(tr);
+  });
+  document.querySelectorAll("#wl tbody tr").forEach(tr => tr.classList.toggle("sel", tr.dataset.iso === selected));
+}
+
+/* ---------- scatter ---------- */
+const tip = $("#tip");
+const showTip = (e, html) => { tip.innerHTML = html; tip.style.opacity = 1; moveTip(e); };
+const moveTip = e => {
+  const p = e.touches ? e.touches[0] : e;
+  tip.style.left = Math.min(p.clientX + 14, innerWidth - tip.offsetWidth - 10) + "px";
+  tip.style.top = Math.max(p.clientY - tip.offsetHeight - 12, 8) + "px";
+};
+const hideTip = () => { tip.style.opacity = 0; };
+
+function drawScatter() {
+  const svg = $("#c-scatter"), W = 760, H = 460, m = { t: 16, r: 20, b: 46, l: 54 };
+  svg.replaceChildren();
+  const pts = S.countries.filter(c => c.resid_context !== null && c.stock_mean_recent !== null);
+  const xs = pts.map(p => p.stock_mean_recent), ys = pts.map(p => p.resid_context);
+  const x = scale(0, Math.max(...xs) * 1.08, m.l, W - m.r);
+  const yhi = Math.max(...ys.map(Math.abs)) * 1.1;
+  const y = scale(-yhi, yhi, H - m.b, m.t);
+
+  for (const t of niceTicks(-yhi, yhi, 4)) {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), class: "gridline" }));
+    svg.appendChild(txt(sign(t, 0).replace("−0", "0").replace("+0", "0"), { x: m.l - 8, y: y(t) + 4, "text-anchor": "end", class: "axis" }));
+  }
+  svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: "var(--line-2)", "stroke-width": 1.5 }));
+  svg.appendChild(txt("what its context predicts", { x: W - m.r, y: y(0) - 7, "text-anchor": "end", class: "mark-label", fill: "var(--ink-faint)" }));
+  for (const t of niceTicks(0, Math.max(...xs) * 1.08, 5))
+    svg.appendChild(txt(t, { x: x(t), y: H - m.b + 18, "text-anchor": "middle", class: "axis" }));
+  svg.appendChild(txt("Anaemia policies on the books (average of the recent years)", { x: (m.l + W - m.r) / 2, y: H - 12, "text-anchor": "middle", class: "axis" }));
+  svg.appendChild(txt("worse ↑", { x: m.l - 8, y: m.t + 12, "text-anchor": "end", class: "mark-label", fill: "var(--plum)" }));
+  svg.appendChild(txt("better ↓", { x: m.l - 8, y: H - m.b - 6, "text-anchor": "end", class: "mark-label", fill: "var(--green-deep)" }));
+
+  for (const p of pts) {
+    const pos = p.group && p.group.startsWith("positive"), neg = p.group && p.group.startsWith("under");
+    const fill = pos ? "var(--green-deep)" : neg ? "var(--plum)" : "none";
+    const g = el("g", { class: "dot", tabindex: 0, role: "button", "aria-label": `${p.country}: ${fmt(p.stock_mean_recent)} policies, ${sign(p.resid_context)} points against context` });
+    g.appendChild(neg
+      ? el("path", { d: `M${x(p.stock_mean_recent)},${y(p.resid_context) - 6} L${x(p.stock_mean_recent) + 5.5},${y(p.resid_context) + 4} L${x(p.stock_mean_recent) - 5.5},${y(p.resid_context) + 4} Z`, fill, stroke: "var(--surface)", "stroke-width": 1.5 })
+      : el("circle", { cx: x(p.stock_mean_recent), cy: y(p.resid_context), r: pos ? 6 : 4.5, fill, stroke: pos ? "var(--surface)" : "var(--ink-faint)", "stroke-width": 1.5 }));
+    const show = e => showTip(e, `<b>${p.country}</b><br>${fmt(p.stock_mean_recent)} policies on the books<br>${sign(p.resid_context)} points against context<br>anaemia ${fmt(p.anaemia_2023)}% in 2023`);
+    g.addEventListener("mouseenter", show); g.addEventListener("mousemove", moveTip);
+    g.addEventListener("mouseleave", hideTip); g.addEventListener("focus", e => show(e.target.getBoundingClientRect ? { clientX: e.target.getBoundingClientRect().x, clientY: e.target.getBoundingClientRect().y } : e));
+    g.addEventListener("blur", hideTip);
+    const pick = () => { selected = p.iso3; $("#country").value = p.iso3; drawGap(); $("#gap").scrollIntoView({ behavior: "smooth", block: "start" }); };
+    g.addEventListener("click", pick);
+    g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+    svg.appendChild(g);
+  }
+  // direct labels on the extremes only
+  const extremes = [...pts].sort((a, b) => a.resid_context - b.resid_context).slice(0, 3)
+    .concat([...pts].sort((a, b) => b.resid_context - a.resid_context).slice(0, 3));
+  for (const p of extremes) svg.appendChild(txt(p.country, {
+    x: x(p.stock_mean_recent) + 9, y: y(p.resid_context) + 4, class: "mark-label",
+    fill: p.resid_context < 0 ? "var(--green-deep)" : "var(--plum)"
+  }));
+
+  const tails = (test, node) => {
+    node.replaceChildren();
+    S.countries.filter(c => c.group && test(c.group)).sort((a, b) => a.resid_context - b.resid_context).forEach(c => {
+      const li = document.createElement("li");
+      li.innerHTML = `<button type="button">${c.country}</button><span class="v">${sign(c.resid_context)} pp · ${fmt(c.stock_2023, 0)} policies</span>`;
+      li.querySelector("button").addEventListener("click", () => {
+        selected = c.iso3; $("#country").value = c.iso3; drawGap(); $("#gap").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      node.appendChild(li);
+    });
+  };
+  tails(g => g.startsWith("positive"), $("#tail-pos"));
+  tails(g => g.startsWith("under"), $("#tail-neg"));
+}
+
+/* ---------- watchlist ---------- */
+let sortKey = "concern_rank", sortAsc = true;
+function drawWatchlist() {
+  const tb = $("#wl tbody"); tb.replaceChildren();
+  const rows = [...S.countries].sort((a, b) => {
+    const A = a[sortKey], B = b[sortKey];
+    if (A === null) return 1; if (B === null) return -1;
+    return (typeof A === "string" ? A.localeCompare(B) : A - B) * (sortAsc ? 1 : -1);
+  });
+  for (const c of rows) {
+    const tr = document.createElement("tr");
+    tr.dataset.iso = c.iso3;
+    if (c.iso3 === selected) tr.classList.add("sel");
+    const pct = Math.round((c.concern_stability ?? 0) * 100);
+    tr.innerHTML = `<td class="num">${fmt(c.concern_rank, 0)}</td>`
+      + `<td><span class="cname">${c.country}</span></td>`
+      + `<td class="num">${fmt(c.concern, 2)}</td>`
+      + `<td class="num">${fmt(c.anaemia_2023)}%</td>`
+      + `<td class="num" style="color:${c.anaemia_change > 0 ? "var(--plum)" : "var(--green-deep)"}">${sign(c.anaemia_change, 1)}</td>`
+      + `<td class="num">${fmt(c.stock_2023, 0)}</td>`
+      + `<td><span class="bar" title="${pct}% of random weightings put it in the worst ten"><i style="width:${pct}%"></i></span></td>`;
+    tr.querySelector(".cname").addEventListener("click", () => {
+      selected = c.iso3; $("#country").value = c.iso3; drawGap(); $("#gap").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    tb.appendChild(tr);
+  }
+  document.querySelectorAll("#wl th").forEach(th => {
+    if (th.dataset.k === sortKey) th.setAttribute("aria-sort", sortAsc ? "ascending" : "descending");
+    else th.removeAttribute("aria-sort");
+  });
+}
+
+/* ---------- specification curve ---------- */
+function drawSpec() {
+  const svg = $("#c-spec"), W = 760, H = 240, m = { t: 14, r: 16, b: 34, l: 52 };
+  svg.replaceChildren();
+  const d = S.spec, x = scale(0, d.length - 1, m.l, W - m.r);
+  const lo = Math.min(...d.map(s => s.lo)), hi = Math.max(...d.map(s => s.hi));
+  const y = scale(lo, hi, H - m.b, m.t);
+  for (const t of niceTicks(lo, hi, 4)) {
+    svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t), class: "gridline" }));
+    svg.appendChild(txt(t, { x: m.l - 8, y: y(t) + 4, "text-anchor": "end", class: "axis" }));
+  }
+  svg.appendChild(el("line", { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: "var(--line-2)", "stroke-width": 1.5 }));
+  d.forEach((s, i) => {
+    svg.appendChild(el("line", { x1: x(i), x2: x(i), y1: y(s.lo), y2: y(s.hi), stroke: s.z ? "var(--plum)" : "var(--line)", "stroke-width": 1 }));
+    svg.appendChild(el("circle", { cx: x(i), cy: y(s.c), r: s.z ? 2.4 : 1.6, fill: s.z ? "var(--plum)" : "var(--ink-faint)" }));
+  });
+  svg.appendChild(txt("336 specifications, sorted by estimate →", { x: (m.l + W - m.r) / 2, y: H - 8, "text-anchor": "middle", class: "axis" }));
+  svg.appendChild(txt("points of anaemia per within-country SD of policy", { x: m.l - 8, y: m.t - 2, "text-anchor": "start", class: "axis" }));
+  const s = S.meta.spec_curve;
+  $("#spec-read").innerHTML = `Of <b>${s.n}</b> specifications, <b>${s.n_excludes_zero}</b> have an interval that excludes zero — ${s.n_negative_excludes_zero} pointing to less anaemia, ${s.n_positive_excludes_zero} to more. The median estimate is <b>${sign(s.median, 3)}</b> points per within-country standard deviation of policy. If the effect were real and large, this picture would lean. It does not.`;
+}
+
+/* ---------- boot ---------- */
+Promise.all(["meta", "countries", "series", "spec"].map(n => fetch(`data/${n}.json`).then(r => r.json())))
+  .then(([meta, countries, series, spec]) => {
+    Object.assign(S, { meta, countries, series, spec });
+    $("#dv").textContent = meta.data_version;
+    $("#ra").textContent = new Date(meta.results_run_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
+    $("#kpis").innerHTML = meta.kpis.map(k => `
+      <div class="kpi${k.key === "lead" ? " lead-kpi" : ""}">
+        <div class="kl">${k.label}</div>
+        <div class="kv">${kpiValue(k)}</div>
+        <div class="ku">${k.unit}</div>
+        ${k.ci ? `<div class="kc">95% interval ${sign(k.ci[0])} to ${sign(k.ci[1])} · p = ${k.p.toFixed(3)}</div>`
+          : `<div class="kc">${k.key === "loco" ? "p = " + k.p.toFixed(2) : "equivalence p = " + k.p.toFixed(3)} · ${k.note}</div>`}
+        <div class="kr">${k.reading}</div>
+      </div>`).join("");
+
+    const sel = $("#country");
+    sel.innerHTML = `<option value="">All 49 countries (average)</option>`
+      + [...countries].sort((a, b) => a.country.localeCompare(b.country))
+        .map(c => `<option value="${c.iso3}">${c.country}</option>`).join("");
+    sel.addEventListener("change", () => { selected = sel.value || null; drawGap(); });
+    $("#reset").addEventListener("click", () => { selected = null; sel.value = ""; drawGap(); });
+
+    document.querySelectorAll("#wl th").forEach(th => th.addEventListener("click", () => {
+      const k = th.dataset.k;
+      if (k === sortKey) sortAsc = !sortAsc; else { sortKey = k; sortAsc = k === "concern_rank" || k === "country"; }
+      drawWatchlist();
+    }));
+
+    drawGap(); drawScatter(); drawWatchlist(); drawSpec();
+  })
+  .catch(e => { $("#kpis").innerHTML = `<p>The data files could not be loaded (${e}). Serve this folder over HTTP rather than opening the file directly.</p>`; });
+</script>
+</body>
 </html>
